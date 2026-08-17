@@ -74,12 +74,25 @@ def main():
     host = os.environ.get("SMTP_HOST")
     user = os.environ.get("SMTP_USER")
     pwd = os.environ.get("SMTP_PASS")
-    porta = int(os.environ.get("SMTP_PORT", "465"))
     sempre = os.environ.get("MAIL_SEMPRE") == "1"
 
+    # Il controllo delle credenziali viene prima di qualunque conversione:
+    # su GitHub Actions un secret non configurato non e' assente, e' presente
+    # e vuoto. Leggere la porta prima di qui faceva fallire il passo con un
+    # ValueError invece di saltare l'invio come previsto.
     if not (host and user and pwd):
         print("[email] credenziali SMTP non configurate: salto l'invio")
         return 0
+
+    # Stessa ragione: "or" al posto del default di get(), che con la stringa
+    # vuota non scatta.
+    grezza = (os.environ.get("SMTP_PORT") or "465").strip()
+    try:
+        porta = int(grezza)
+    except ValueError:
+        print(f"[email] SMTP_PORT non e' un numero ({grezza!r}): uso 465",
+              file=sys.stderr)
+        porta = 465
     if not DATI.exists():
         print("[email] manca docs/data.json: eseguire prima scraper/run.py", file=sys.stderr)
         return 1
