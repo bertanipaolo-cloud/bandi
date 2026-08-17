@@ -1,0 +1,137 @@
+"""
+Invio del digest settimanale via SMTP.
+
+Legge le credenziali dalle variabili d'ambiente (su GitHub arrivano dai Secrets):
+  SMTP_HOST       es. smtp.gmail.com
+  SMTP_PORT       465 (SSL) oppure 587 (STARTTLS)
+  SMTP_USER       indirizzo mittente
+  SMTP_PASS       password per app / token SMTP
+  MAIL_TO         destinatari del riepilogo completo, separati da virgola
+  MAIL_TO_4X4     (facoltativo) destinatari del solo digest 4x4
+  MAIL_TO_JOULE   (facoltativo) destinatari del solo digest Joule
+  MAIL_SEMPRE     se "1", invia anche quando non ci sono novita'
+
+Se MAIL_TO_JOULE e' impostato, a Joule arriva solo la sua parte: non ha senso
+far leggere a chi fa comunicazione venti bandi di refezione scolastica.
+
+Se le variabili non ci sono, esce senza errore: la dashboard resta comunque
+aggiornata e l'email si attiva quando i secret vengono configurati.
+"""
+
+import json
+import os
+import smtplib
+import ssl
+import sys
+from email.message import EmailMessage
+from pathlib import Path
+
+RADICE = Path(__file__).resolve().parent.parent
+DATA = RADICE / "data"
+DATI = RADICE / "docs" / "data.json"
+
+# variabile d'ambiente -> (file digest, etichetta societa' o None per il completo)
+INVII = [
+    ("MAIL_TO", DATA / "digest.html", None),
+    ("MAIL_TO_4X4", DATA / "digest.4x4.html", "4x4"),
+    ("MAIL_TO_JOULE", DATA / "digest.Joule.html", "Joule"),
+]
+
+
+def _destinatari(variabile):
+    return [d.strip() for d in os.environ.get(variabile, "").split(",") if d.strip()]
+
+
+def _oggetto(percorso, ripiego):
+    f = percorso.with_suffix(".oggetto.txt")
+    if f.exists():
+        testo = f.read_text(encoding="utf-8").strip()
+        if testo:
+            return testo
+    return ripiego
+
+
+def _conta(meta, societa):
+    if societa is None:
+        return meta.get("nuovi", 0)
+    return (meta.get("per_societa", {}).get(societa, {}) or {}).get("nuovi", 0)
+
+
+def _spedisci(host, porta, user, pwd, msg):
+    contesto = ssl.create_default_context()
+    if porta == 465:
+        with smtplib.SMTP_SSL(host, porta, context=contesto, timeout=60) as s:
+            s.login(user, pwd)
+            s.send_message(msg)
+    else:
+        with smtplib.SMTP(host, porta, timeout=60) as s:
+            s.starttls(context=contesto)
+            s.login(user, pwd)
+            s.send_message(msg)
+
+
+def main():
+    host = os.environ.get("SMTP_HOST")
+    user = os.environ.get("SMTP_USER")
+    pwd = os.environ.get("SMTP_PASS")
+    porta = int(os.environ.get("SMTP_PORT", "465"))
+    sempre = os.environ.get("MAIL_SEMPRE") == "1"
+
+    if not (host and user and pwd):
+        print("[email] credenziali SMTP non configurate: salto l'invio")
+        return 0
+    if not DATI.exists():
+        print("[email] manca docs/data.json: eseguire prima scraper/run.py", file=sys.stderr)
+        return 1
+
+    meta = json.loads(DATI.read_text(encoding="utf-8"))["meta"]
+
+    inviate = 0
+    problemi = 0
+    for variabile, percorso, societa in INVII:
+        destinatari = _destinatari(variabile)
+        if not destinatari:
+            continue
+        if not percorso.exists():
+            print(f"[email] manca {percorso.name}: salto {variabile}", file=sys.stderr)
+            problemi += 1
+            continue
+
+        nuovi = _conta(meta, societa)
+        if nuovi == 0 and not sempre:
+            print(f"[email] {variabile}: nessuna novità, nessun invio "
+                  f"(MAIL_SEMPRE=1 per forzarlo)")
+            continue
+
+        etichetta = societa or "4x4 e Joule"
+        oggetto = _oggetto(percorso, f"Radar appalti {etichetta} · {nuovi} nuove opportunità")
+        if societa is None and meta.get("in_scadenza_7gg"):
+            oggetto += f" · {meta['in_scadenza_7gg']} in scadenza"
+
+        msg = EmailMessage()
+        msg["Subject"] = oggetto
+        msg["From"] = user
+        msg["To"] = ", ".join(destinatari)
+        msg.set_content(
+            f"{nuovi} nuove opportunità per {etichetta} questa settimana.\n"
+            f"{meta.get('manifestazioni', 0)} manifestazioni d'interesse aperte in totale.\n"
+            "Apri la dashboard per il dettaglio.\n"
+        )
+        msg.add_alternative(percorso.read_text(encoding="utf-8"), subtype="html")
+
+        try:
+            _spedisci(host, porta, user, pwd, msg)
+        except Exception as e:
+            print(f"[email] {variabile}: invio fallito: {type(e).__name__}: {e}", file=sys.stderr)
+            problemi += 1
+            continue
+        inviate += 1
+        print(f"[email] {variabile}: inviata a {len(destinatari)} destinatari · {oggetto}")
+
+    if not inviate and not problemi:
+        print("[email] nessun destinatario configurato (MAIL_TO / MAIL_TO_JOULE)")
+    return 1 if problemi else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

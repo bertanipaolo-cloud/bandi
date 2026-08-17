@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Radar appalti · 4x4 e Joule</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f6f7f9; color: #1c1e21;
+  }
+  .box {
+    max-width: 34rem; padding: 2.5rem; margin: 1rem;
+    background: #fff; border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06);
+  }
+  h1 { margin: 0 0 .25rem; font-size: 1.35rem; }
+  p.sub { margin: 0 0 1.5rem; color: #6b7280; font-size: .95rem; }
+  ol { margin: 0; padding-left: 1.2rem; }
+  li { margin-bottom: .45rem; }
+  code {
+    background: #f1f2f4; padding: .12em .4em; border-radius: 4px;
+    font-size: .88em;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #16181c; color: #e6e8eb; }
+    .box { background: #1f2227; box-shadow: none; border: 1px solid #2e3238; }
+    p.sub { color: #9aa1ab; }
+    code { background: #2a2e34; }
+  }
+</style>
+</head>
+<body>
+  <main class="box">
+    <h1>Radar appalti · 4x4 e Joule</h1>
+    <p class="sub">In attesa del primo run.</p>
+    <p>Questa pagina viene sostituita dalla dashboard vera appena il workflow
+       gira per la prima volta con esito positivo. Nessun dato è ancora stato
+       raccolto: qui non c'è nulla da leggere.</p>
+    <ol>
+      <li><strong>Settings → Actions → General → Workflow permissions</strong>:
+          <em>Read and write permissions</em>.</li>
+      <li><strong>Settings → Pages</strong>: branch <code>main</code>, cartella
+          <code>/docs</code>.</li>
+      <li><strong>Actions → Radar appalti → Run workflow</strong>.</li>
+    </ol>
+  </main>
+</body>
+</html>
