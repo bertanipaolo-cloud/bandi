@@ -1,0 +1,130 @@
+{
+  "portali": [
+    {
+      "base": "https://appalti.amt.genova.it/PortaleAppalti/",
+      "enti": [
+        "AZIENDA MOBILITA' E TRASPORTI S.P.A."
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://appalti.comune.barletta.bt.it/PortaleAppalti/",
+      "enti": [
+        "COMUNE DI BARLETTA"
+      ],
+      "visto": "2026-08-17",
+      "ultimi_avvisi": 5
+    },
+    {
+      "base": "https://appalti.comune.genova.it/PortaleAppalti/",
+      "enti": [
+        "COMUNE DI GENOVA"
+      ],
+      "visto": "2026-08-17",
+      "ultimi_avvisi": 10
+    },
+    {
+      "base": "https://appalti.comune.ra.it/PortaleAppalti/",
+      "enti": [
+        "COMUNE DI RAVENNA"
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://cuc-altotirrenocosentino.maggiolicloud.it/PortaleAppalti/",
+      "enti": [
+        "CENTRALE UNICA DI COMMITTENZA - ALTO TIRRENO COSENTINO"
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://gareappalti.zetema.it/PortaleAppalti/",
+      "enti": [
+        "ZETEMA PROGETTO CULTURA SRL"
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://garetelematiche.provincia.terni.it/PortaleAppalti/",
+      "enti": [
+        "AMMINISTRAZIONE PROVINCIALE DI TERNI"
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://gtmultie.regione.marche.it/PortaleAppalti/",
+      "enti": [
+        "AGENZIA REGIONALE SANITARIA MARCHE"
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://piattaformaacquisti.rai.it/PortaleAppalti/",
+      "enti": [
+        "RAI RADIOTELEVISIONE ITALIANA S.P.A."
+      ],
+      "visto": "2026-08-17",
+      "ultimi_avvisi": 1
+    },
+    {
+      "base": "https://portaleappalti.mit.gov.it/PortaleAppalti/",
+      "enti": [
+        "PROVVEDITORATO INTERREGIONALE PER LE OPERE PUBBLICHE PER LA CAMPANIA MOLISE PUGLIA E BASILICATA"
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://portaleappalti.ponmetropalermo.it/PortaleAppalti/",
+      "enti": [
+        "UNIONE MADONIE"
+      ],
+      "visto": "2026-08-17",
+      "ultimi_avvisi": 3
+    },
+    {
+      "base": "https://portaleappalti.sacal.it/PortaleAppalti/",
+      "enti": [
+        "SOCIETA' AEROPORTUALE CALABRESE S.P.A."
+      ],
+      "visto": "2026-08-17",
+      "ultimi_avvisi": 4
+    },
+    {
+      "base": "https://provviterbo-appalti.maggiolicloud.it/PortaleAppalti/",
+      "enti": [
+        "AMMINISTRAZIONE PROVINCIALE DI VITERBO"
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://sangiorgioacremano-appalti.maggiolicloud.it/PortaleAppalti/",
+      "enti": [
+        "COMUNE DI SAN GIORGIO A CREMANO"
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://umpotenzaesino-appalti.regione.marche.it/PortaleAppalti/",
+      "enti": [
+        "UNIONE MONTANA POTENZA ESINO MUSONE"
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://unife.ubuy.cineca.it/PortaleAppalti/",
+      "enti": [
+        "UNIVERSITA DEGLI STUDI DI FERRARA"
+      ],
+      "visto": null
+    },
+    {
+      "base": "https://www.sua-rb.it/PortaleAppalti/",
+      "enti": [
+        "REGIONE BASILICATA"
+      ],
+      "visto": "2026-08-17",
+      "ultimi_avvisi": 0
+    }
+  ],
+  "aggiornato": "2026-08-17"
+}

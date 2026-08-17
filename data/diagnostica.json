@@ -1,0 +1,10 @@
+{
+  "quando": "2026-08-17T11:16:09.097806+00:00",
+  "fasi": [
+    {
+      "fase": "endpoint_diretto",
+      "items": 488
+    }
+  ],
+  "totale_normalizzati": 488
+}
