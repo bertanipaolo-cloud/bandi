@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+data/pagina_fallita.html
+data/pagina_fallita.png
+data/rdo_grezze.json
