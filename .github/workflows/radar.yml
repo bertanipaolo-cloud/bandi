@@ -1,0 +1,172 @@
+name: Radar appalti
+
+on:
+  schedule:
+    # ogni lunedì alle 05:00 UTC = 07:00 a Roma d'estate, 06:00 d'inverno
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+    inputs:
+      giorni_anac:
+        description: "Giorni di pubblicazioni ANAC da scaricare"
+        default: "8"
+      item_pagina:
+        description: "Bandi per pagina nella chiamata al MePA"
+        default: "200"
+      max_portali:
+        description: "Quanti Portale Appalti interrogare"
+        default: "60"
+      invia_email:
+        description: "Inviare l'email anche senza novità (1 = sì)"
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: radar-appalti
+  cancel-in-progress: false
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installa le dipendenze
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      # ANAC e' la fonte principale: e' una GET pubblica, non serve il browser.
+      # La finestra parte da 8 giorni per coprire il run settimanale con un
+      # giorno di margine, cosi' un lunedi' festivo non apre un buco.
+      - name: Scarica gli avvisi da ANAC (PVL)
+        id: anac
+        env:
+          GIORNI: ${{ github.event.inputs.giorni_anac || '8' }}
+        run: |
+          set +e
+          python scraper/fetch_anac.py --giorni "$GIORNI"
+          echo "esito=$?" >> "$GITHUB_OUTPUT"
+
+      # I portali degli enti aggiungono cio' che su ANAC non arriva: richieste
+      # di preventivo prima di un affidamento diretto e albi fornitori aperti.
+      # Il registro dei portali si popola da solo dai link di gara di ANAC.
+      - name: Scarica gli avvisi dai Portale Appalti degli enti
+        id: portali
+        continue-on-error: true
+        env:
+          MAX_PORTALI: ${{ github.event.inputs.max_portali || '60' }}
+        run: python scraper/fetch_portali.py --scopri --max-portali "$MAX_PORTALI"
+
+      - name: Scarica le RDO aperte dal MePA
+        id: mepa
+        env:
+          MEPA_ITEM_PAGINA: ${{ github.event.inputs.item_pagina || '200' }}
+        run: |
+          set +e
+          python scraper/fetch_rdo.py
+          echo "esito=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Diagnostica in caso di estrazione a vuoto
+        if: steps.mepa.outputs.esito != '0' || steps.anac.outputs.esito != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostica-radar
+          path: |
+            data/pagina_fallita.html
+            data/pagina_fallita.png
+            data/diagnostica.json
+            data/endpoint.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+      # Una sola fonte caduta non deve buttare via il run: si continua con
+      # l'altra e si segnala. Si ferma solo se sono cadute entrambe.
+      - name: Segnala la fonte caduta
+        if: steps.mepa.outputs.esito != '0' || steps.anac.outputs.esito != '0'
+        run: |
+          if [ "${{ steps.anac.outputs.esito }}" != "0" ]; then
+            echo "::warning::ANAC PVL non ha risposto: manifestazioni d'interesse assenti da questo run."
+          fi
+          if [ "${{ steps.mepa.outputs.esito }}" != "0" ]; then
+            echo "::warning::Vetrina MePA non raggiungibile: RDO aperte assenti da questo run."
+          fi
+
+      - name: Interrompi se non è arrivato nulla da nessuna fonte
+        if: steps.mepa.outputs.esito != '0' && steps.anac.outputs.esito != '0'
+        run: |
+          echo "::error::Nessuna fonte ha risposto: né ANAC né la vetrina MePA."
+          echo "La dashboard pubblicata resta quella dell'ultimo run riuscito."
+          echo "Scarica l'artifact 'diagnostica-radar' per capire cosa è cambiato."
+          exit 1
+
+      - name: Classifica e costruisci dashboard e digest
+        run: python scraper/run.py
+
+      - name: Pubblica i risultati
+        run: |
+          git config user.name  "radar-appalti[bot]"
+          git config user.email "radar-appalti@users.noreply.github.com"
+          # Si aggiunge un file per volta saltando quelli assenti: al primo run
+          # data/endpoint.json e data/portali.json possono non esserci ancora,
+          # e un "git add" su un percorso inesistente farebbe fallire il run
+          # dopo che tutto il lavoro e' gia' andato a buon fine.
+          for f in docs/index.html docs/data.json data/storico.json \
+                   data/portali.json data/endpoint.json data/diagnostica.json; do
+            [ -f "$f" ] && git add "$f"
+          done
+          if git diff --staged --quiet; then
+            echo "nessuna variazione da pubblicare"
+          else
+            git commit -m "Radar appalti: aggiornamento $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Invia il digest via email
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          MAIL_TO_4X4: ${{ secrets.MAIL_TO_4X4 }}
+          MAIL_TO_JOULE: ${{ secrets.MAIL_TO_JOULE }}
+          MAIL_SEMPRE: ${{ github.event.inputs.invia_email || '0' }}
+        run: python scraper/invia_email.py
+
+      - name: Riepilogo del run
+        if: always()
+        run: |
+          if [ -f docs/data.json ]; then
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          d = json.loads(pathlib.Path("docs/data.json").read_text(encoding="utf-8"))
+          m = d["meta"]
+          print("## Radar appalti · 4x4 e Joule\n")
+          print(f"- Pubblicazioni esaminate: **{m['esaminati']}**")
+          print(f"- Pertinenti e aperte: **{m['attivi']}**")
+          print(f"- Manifestazioni d'interesse: **{m.get('manifestazioni', 0)}**")
+          print(f"- Novità: **{m['nuovi']}**")
+          print(f"- In scadenza entro 7 giorni: **{m['in_scadenza_7gg']}**")
+          print(f"- Esiti archiviati: **{m.get('esiti', 0)}**\n")
+          print("| Società | Aperte | Nuove | Manifestazioni | Valore |")
+          print("|---|---:|---:|---:|---:|")
+          for s in m.get("per_societa", {}).values():
+              print(f"| {s['etichetta']} | {s['totale']} | {s['nuovi']} | "
+                    f"{s['manifestazioni']} | € {s['valore_totale']:,.0f} |")
+          print("\n| Settore | Aperte | Nuove | Valore |")
+          print("|---|---:|---:|---:|")
+          for s in m["per_settore"].values():
+              print(f"| {s['etichetta']} | {s['totale']} | {s['nuovi']} | € {s['valore_totale']:,.0f} |")
+          fonti = " · ".join(f"{k}: {v}" for k, v in (m.get("per_fonte") or {}).items())
+          print(f"\nFonti: {fonti or 'nessuna'}")
+          PY
+          fi
