@@ -1,11 +1,22 @@
-# Radar appalti · 4x4 e Joule
+# Radar appalti · gruppo 4x4
 
-Motore di ricerca settimanale sugli appalti pubblici, filtrato sui mestieri di due società:
+Motore di ricerca settimanale sugli appalti pubblici, filtrato sui mestieri delle otto società del gruppo:
 
 | Società | Settori |
 |---|---|
-| **4x4** | consulenza aziendale · organizzazione eventi · catering e ristorazione |
+| **4x4** | consulenza aziendale · organizzazione eventi |
 | **Joule** | comunicazione e marketing: campagne, digital e social, branding e grafica, ufficio stampa |
+| **Latta** | catering per eventi: coffee break, banqueting, buffet. **Non** le mense |
+| **New Food** | forniture alimentari: derrate, ortofrutta, biologico, lattiero-caseari |
+| **Gabrini** | gastronomia e retail: salumeria, carni, prodotti da forno, piatti pronti |
+| **Berebene** | bevande: analcoliche, acque minerali, birra |
+| **Icaro** | vino ed enologia |
+| **Topic** | editoria: libri, periodici, patrimonio librario |
+
+Dal 24/08/2026 il radar guarda anche le **forniture di beni**, non solo i servizi.
+Il confine con il catering è netto: gestire una mensa è un servizio ed è fuori
+perimetro; vendere le derrate a quella stessa mensa è una fornitura e resta dentro,
+a New Food o Gabrini.
 
 Dashboard pubblicata: `https://bertanipaolo-cloud.github.io/mepa-radar/`
 
@@ -49,7 +60,7 @@ browser. L'endpoint è stato trovato l'11 agosto 2026 leggendo il traffico della
 *ricerca avanzata* del portale.
 
 **Il filtro CPV lato server è ciò che rende sostenibile la scala nazionale.** ANAC
-pubblica decine di migliaia di avvisi al mese; sui 71 prefissi CPV dei quattro settori
+pubblica decine di migliaia di avvisi al mese; sui 111 prefissi CPV dei nove settori
 restano poche centinaia a settimana. I prefissi stanno in `cpv_query` dentro
 `dictionaries.py` e vengono spediti in gruppi da 12.
 
@@ -110,13 +121,13 @@ Si ferma solo se cadono tutte.
 ## Classificazione
 
 `scraper/classify.py` assegna a ogni pubblicazione un punteggio 0–100 per ciascuno dei
-quattro settori, combinando codice o etichetta CPV, categoria, parole chiave "forti" nel
+nove settori, combinando codice o etichetta CPV, categoria, parole chiave "forti" nel
 titolo e nel testo, parole affini. Sottrae punti sui termini che segnalano forniture o
 lavori, e azzera sui falsi amici.
 
 Entra in dashboard solo chi supera **30 punti** *e* contiene almeno un termine forte.
-La società segue il settore vincente; se un settore secondario appartiene all'altra
-società, la scheda lo dice ("anche Joule").
+La società segue il settore vincente; se un settore secondario appartiene a un'altra
+società del gruppo, la scheda lo dice ("anche Joule").
 
 Tre regole imparate sui bandi veri, da non smontare:
 
@@ -162,7 +173,7 @@ git push -u origin main
 | `SMTP_PASS` | una **password per le app** generata dall'account Google, non quella normale |
 | `MAIL_TO` | destinatari del riepilogo completo, separati da virgola |
 | `MAIL_TO_4X4` | *(facoltativo)* destinatari del solo digest 4x4 |
-| `MAIL_TO_JOULE` | *(facoltativo)* destinatari del solo digest Joule |
+| `MAIL_TO_<SOCIETÀ>` | *(facoltativo)* destinatari del digest di una sola società: `MAIL_TO_4X4`, `MAIL_TO_JOULE`, `MAIL_TO_LATTA`, `MAIL_TO_NEW_FOOD`, `MAIL_TO_GABRINI`, `MAIL_TO_BEREBENE`, `MAIL_TO_ICARO`, `MAIL_TO_TOPIC` |
 
 Se `MAIL_TO_JOULE` è impostato, a Joule arriva solo la sua parte: non ha senso far
 leggere a chi fa comunicazione venti bandi di refezione scolastica.
@@ -217,7 +228,7 @@ scraper/
   fetch_anac.py            estrazione dalla PVL ANAC (HTTP semplice)
   fetch_portali.py         rete dei Portale Appalti + registro automatico degli enti
   fetch_rdo.py             estrazione dalla vetrina MePA (Playwright)
-  dictionaries.py          vocabolario dei quattro settori: CPV, categorie, keyword, società
+  dictionaries.py          vocabolario dei nove settori: CPV, categorie, keyword, società
   classify.py              punteggio di pertinenza, cancello CPV, esclusioni globali
   run.py                   orchestrazione, storico, statistiche, separazione degli esiti
   dashboard.py             generatore della dashboard HTML
