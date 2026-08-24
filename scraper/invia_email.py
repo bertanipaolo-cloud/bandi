@@ -7,12 +7,14 @@ Legge le credenziali dalle variabili d'ambiente (su GitHub arrivano dai Secrets)
   SMTP_USER       indirizzo mittente
   SMTP_PASS       password per app / token SMTP
   MAIL_TO         destinatari del riepilogo completo, separati da virgola
-  MAIL_TO_4X4     (facoltativo) destinatari del solo digest 4x4
-  MAIL_TO_JOULE   (facoltativo) destinatari del solo digest Joule
+  MAIL_TO_<SOCIETA> (facoltativo) destinatari del digest di quella societa':
+                    MAIL_TO_4X4, MAIL_TO_JOULE, MAIL_TO_LATTA,
+                    MAIL_TO_NEW_FOOD, MAIL_TO_GABRINI, MAIL_TO_BEREBENE,
+                    MAIL_TO_ICARO, MAIL_TO_TOPIC
   MAIL_SEMPRE     se "1", invia anche quando non ci sono novita'
 
 Se MAIL_TO_JOULE e' impostato, a Joule arriva solo la sua parte: non ha senso
-far leggere a chi fa comunicazione venti bandi di refezione scolastica.
+far leggere a chi fa comunicazione venti forniture di derrate alimentari.
 
 Se le variabili non ci sono, esce senza errore: la dashboard resta comunque
 aggiornata e l'email si attiva quando i secret vengono configurati.
@@ -26,16 +28,24 @@ import sys
 from email.message import EmailMessage
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dictionaries import SOCIETA, slug_societa  # noqa: E402
+
 RADICE = Path(__file__).resolve().parent.parent
 DATA = RADICE / "data"
 DATI = RADICE / "docs" / "data.json"
 
 # variabile d'ambiente -> (file digest, etichetta societa' o None per il completo)
-INVII = [
-    ("MAIL_TO", DATA / "digest.html", None),
-    ("MAIL_TO_4X4", DATA / "digest.4x4.html", "4x4"),
-    ("MAIL_TO_JOULE", DATA / "digest.Joule.html", "Joule"),
-]
+# Un invio per societa', costruito dai dizionari invece che a mano: con otto
+# societa' una lista scritta a mano si dimentica sempre l'ultima aggiunta.
+# La variabile e' MAIL_TO_<SOCIETA> in maiuscolo con i trattini a underscore:
+# MAIL_TO_4X4, MAIL_TO_JOULE, MAIL_TO_NEW_FOOD, MAIL_TO_LATTA...
+INVII = [("MAIL_TO", DATA / "digest.html", None)]
+for _societa in SOCIETA:
+    _slug = slug_societa(_societa)
+    INVII.append((f"MAIL_TO_{_slug.upper().replace('-', '_')}",
+                  DATA / f"digest.{_slug}.html",
+                  _societa))
 
 
 def _destinatari(variabile):
@@ -116,7 +126,7 @@ def main():
                   f"(MAIL_SEMPRE=1 per forzarlo)")
             continue
 
-        etichetta = societa or "4x4 e Joule"
+        etichetta = societa or "gruppo 4x4"
         oggetto = _oggetto(percorso, f"Radar appalti {etichetta} · {nuovi} nuove opportunità")
         if societa is None and meta.get("in_scadenza_7gg"):
             oggetto += f" · {meta['in_scadenza_7gg']} in scadenza"
@@ -142,7 +152,8 @@ def main():
         print(f"[email] {variabile}: inviata a {len(destinatari)} destinatari · {oggetto}")
 
     if not inviate and not problemi:
-        print("[email] nessun destinatario configurato (MAIL_TO / MAIL_TO_JOULE)")
+        print("[email] nessun destinatario configurato "
+              "(MAIL_TO oppure MAIL_TO_<SOCIETA>)")
     return 1 if problemi else 0
 
 

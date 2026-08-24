@@ -195,8 +195,11 @@ def verifica():
     # --- smistamento fra societa' ----------------------------------------
     atteso = [
         (REALI[0], "4x4", "Basilicata: comunicazione + eventi, CPV eventi → 4x4 con Joule secondario"),
-        (REALI[2], "4x4", "Refezione scolastica → catering 4x4"),
-        (REALI[3], "4x4", "Mensa scolastica → catering 4x4"),
+        # Dal 17/08/2026 la scuola e' fuori perimetro: questi due avvisi
+        # arrivano ancora da ANAC (il CPV li porta dentro) ma non devono
+        # essere assegnati a nessuna societa'.
+        (REALI[2], None, "Refezione scolastica → fuori perimetro"),
+        (REALI[3], None, "Mensa scolastica → fuori perimetro"),
     ]
     for grezzo, societa, nota in atteso:
         r = classifica(normalizza_avviso(grezzo))

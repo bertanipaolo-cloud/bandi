@@ -6,14 +6,19 @@ da GitHub Pages, da disco o come artifact, senza dipendenze esterne.
 """
 
 import json
+import sys
+from html import escape as html_escape
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from dictionaries import SETTORI, SOCIETA  # noqa: E402
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="it" data-theme="auto">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Radar MePA · 4x4</title>
+<title>Radar appalti · gruppo 4x4</title>
 <style>
   :root {
     color-scheme: light dark;
@@ -25,10 +30,7 @@ TEMPLATE = """<!DOCTYPE html>
     --grid: #e1e0d9;
     --baseline: #c3c2b7;
     --border: rgba(11,11,11,0.10);
-    --serie-consulenza: #2a78d6;
-    --serie-eventi: #eb6834;
-    --serie-catering: #1baf7a;
-    --serie-comunicazione: #8b5cf6;
+__SERIE_CHIARO__
     --good: #0ca30c;
     --warning: #fab219;
     --critical: #d03b3b;
@@ -44,10 +46,7 @@ TEMPLATE = """<!DOCTYPE html>
       --grid: #2c2c2a;
       --baseline: #383835;
       --border: rgba(255,255,255,0.10);
-      --serie-consulenza: #3987e5;
-      --serie-eventi: #d95926;
-      --serie-catering: #199e70;
-      --serie-comunicazione: #a78bfa;
+__SERIE_SCURO__
     }
   }
   :root[data-theme="dark"] {
@@ -59,10 +58,7 @@ TEMPLATE = """<!DOCTYPE html>
     --grid: #2c2c2a;
     --baseline: #383835;
     --border: rgba(255,255,255,0.10);
-    --serie-consulenza: #3987e5;
-    --serie-eventi: #d95926;
-    --serie-catering: #199e70;
-    --serie-comunicazione: #a78bfa;
+__SERIE_SCURO__
   }
 
   * { box-sizing: border-box; }
@@ -79,6 +75,19 @@ TEMPLATE = """<!DOCTYPE html>
                justify-content: space-between; margin-bottom: 6px; }
   h1 { font-size: 26px; margin: 0; letter-spacing: -0.01em; }
   .sub { color: var(--text-secondary); font-size: 14px; margin: 4px 0 0; }
+  /* Il momento della fotografia va letto senza cercarlo: la dashboard e' una
+     pagina statica e senza questo timbro non si distingue un dato di stamattina
+     da uno di tre settimane fa. */
+  .topright { display: flex; align-items: center; gap: 14px; margin-left: auto; }
+  .stamp { margin: 0; text-align: right; line-height: 1.35; }
+  .stamp-lab { display: block; font-size: 11px; text-transform: uppercase;
+               letter-spacing: 0.06em; color: var(--muted); }
+  .stamp-val { display: block; font-size: 14px; font-weight: 600;
+               color: var(--text-primary); font-variant-numeric: tabular-nums; }
+  @media (max-width: 640px) {
+    .topright { width: 100%; justify-content: space-between; margin-left: 0; }
+    .stamp { text-align: left; }
+  }
   .badge-demo { display: inline-block; background: var(--warning); color: #0b0b0b;
                 border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; }
   .theme-btn { background: var(--surface-1); border: 1px solid var(--border);
@@ -122,11 +131,8 @@ TEMPLATE = """<!DOCTYPE html>
   .card { background: var(--surface-1); border: 1px solid var(--border);
           border-left: 3px solid var(--baseline);
           border-radius: var(--radius); padding: 16px 18px; margin-bottom: 12px; }
-  .card.consulenza { border-left-color: var(--serie-consulenza); }
-  .card.eventi     { border-left-color: var(--serie-eventi); }
-  .card.catering   { border-left-color: var(--serie-catering); }
-  .card.comunicazione { border-left-color: var(--serie-comunicazione); }
-  .tag.manifestazione { background: var(--serie-comunicazione); border-color: var(--serie-comunicazione);
+__REGOLE_CARD__
+  .tag.manifestazione { background: var(--accento); border-color: var(--accento);
                         color: #fff; font-weight: 600; }
   .tag.fonte { letter-spacing: 0.04em; }
   .gruppo { font-size: 12px; color: var(--muted); text-transform: uppercase;
@@ -174,12 +180,17 @@ TEMPLATE = """<!DOCTYPE html>
 
   <header class="top">
     <div>
-      <h1>Radar appalti · 4x4 e Joule</h1>
+      <h1>Radar appalti · gruppo 4x4</h1>
       <p class="sub">Manifestazioni d'interesse, gare aperte ed esiti dalla Piattaforma di Pubblicità
-        a Valore Legale di ANAC e dalle RDO aperte del MePA, filtrati per consulenza, eventi,
-        catering (4x4) e comunicazione (Joule). __BADGE__</p>
+        a Valore Legale di ANAC e dalle RDO aperte del MePA, filtrati per __SETTORI_TESTO__. __BADGE__</p>
     </div>
-    <button class="theme-btn" id="tema" type="button">Tema</button>
+    <div class="topright">
+      <p class="stamp" title="Momento in cui il radar ha prodotto questa fotografia">
+        <span class="stamp-lab">Ultimo aggiornamento</span>
+        <span class="stamp-val">__AGGIORNATO__</span>
+      </p>
+      <button class="theme-btn" id="tema" type="button">Tema</button>
+    </div>
   </header>
 
   <section class="tiles" id="tiles"></section>
@@ -193,13 +204,9 @@ TEMPLATE = """<!DOCTYPE html>
   <div class="controls">
     <input type="search" id="cerca" placeholder="Cerca per titolo, ente, categoria…" aria-label="Cerca">
     <span class="gruppo">Società</span>
-    <button class="chip" data-societa="4x4" aria-pressed="true">4x4</button>
-    <button class="chip" data-societa="Joule" aria-pressed="true"><span class="dot" style="background:var(--serie-comunicazione)"></span>Joule</button>
+__CHIP_SOCIETA__
     <span class="gruppo">Settore</span>
-    <button class="chip" data-settore="consulenza" aria-pressed="true"><span class="dot" style="background:var(--serie-consulenza)"></span>Consulenza</button>
-    <button class="chip" data-settore="eventi" aria-pressed="true"><span class="dot" style="background:var(--serie-eventi)"></span>Eventi</button>
-    <button class="chip" data-settore="catering" aria-pressed="true"><span class="dot" style="background:var(--serie-catering)"></span>Catering</button>
-    <button class="chip" data-settore="comunicazione" aria-pressed="true"><span class="dot" style="background:var(--serie-comunicazione)"></span>Comunicazione</button>
+__CHIP_SETTORE__
     <button class="chip" id="solomanifestazioni" aria-pressed="false">Solo manifestazioni d'interesse</button>
     <button class="chip" id="solonuove" aria-pressed="false">Solo novità</button>
     <button class="chip" id="soloscadenza" aria-pressed="false">In scadenza ≤ 7 gg</button>
@@ -240,7 +247,7 @@ TEMPLATE = """<!DOCTYPE html>
     la partita è già assegnata.</p>
     <p>Fonti: <a href="https://pubblicitalegale.anticorruzione.it/">ANAC · Piattaforma di Pubblicità
     a Valore Legale</a> e <a href="https://www.acquistinretepa.it/opencms/opencms/vetrina_bandi.html?filter=RDO">Acquisti
-    in Rete PA · RDO aperte</a>. Ultimo aggiornamento: __AGGIORNATO__.</p>
+    in Rete PA · RDO aperte</a>.</p>
   </footer>
 </div>
 
@@ -266,9 +273,16 @@ TEMPLATE = """<!DOCTYPE html>
      n: 'la porta di ingresso agli affidamenti diretti'},
     {k:'Novità della settimana', v: META.nuovi, n: 'mai viste nelle scansioni precedenti'},
     {k:'In scadenza entro 7 giorni', v: META.in_scadenza_7gg, n: 'da decidere subito'},
-    {k:'4x4 · Joule',
-     v: `${SOC['4x4'] ? SOC['4x4'].totale : 0} · ${SOC['Joule'] ? SOC['Joule'].totale : 0}`,
-     n: 'opportunità aperte per società'},
+    // Con otto societa' non ci stanno tutte in un tile: si mostra quante ne
+    // hanno almeno un'opportunita' aperta e si nomina quella che ne ha di piu'.
+    // Il dettaglio per societa' e' un clic piu' in la', sui chip.
+    {k:'Società con opportunità',
+     v: (() => { const n = Object.values(SOC).filter(s => s.totale > 0).length;
+                 return `${n} su ${Object.keys(SOC).length}`; })(),
+     n: (() => { const top = Object.values(SOC).filter(s => s.totale > 0)
+                   .sort((a, b) => b.totale - a.totale)[0];
+                 return top ? `più attiva: ${top.etichetta} (${top.totale})`
+                            : 'nessuna società con gare aperte'; })()},
     {k:'Valore complessivo', v: euro(META.valore_totale),
      n: `${META.con_importo} procedure con importo attendibile` +
         (META.importi_sospetti ? ` · ${META.importi_sospetti} sotto € 1.000, esclusi` : '')},
@@ -464,6 +478,64 @@ TEMPLATE = """<!DOCTYPE html>
 """
 
 
+# Accento fisso per i tag "manifestazione d'interesse". Prima era agganciato al
+# colore della comunicazione: con nove settori un colore preso in prestito da uno
+# di essi diventa ambiguo, quindi ora e' una tinta a se'.
+ACCENTO = "#8b5cf6"
+
+
+def _blocchi_tema():
+    """
+    Variabili colore, regole delle schede e chip: tutto generato da SETTORI e
+    SOCIETA'. Erano scritti a mano nel template finche' i settori erano quattro;
+    con nove ogni aggiunta avrebbe richiesto di ricordarsi cinque punti diversi
+    del file, e prima o poi uno sarebbe rimasto indietro.
+    """
+    chiaro = [f"    --serie-{k}: {v['colore']};" for k, v in SETTORI.items()]
+    chiaro.append(f"    --accento: {ACCENTO};")
+    scuro = [f"    --serie-{k}: {v.get('colore_scuro') or v['colore']};"
+             for k, v in SETTORI.items()]
+
+    regole = [f"  .card.{k} {{ border-left-color: var(--serie-{k}); }}"
+              for k in SETTORI]
+
+    chip_soc = []
+    for chiave, info in SOCIETA.items():
+        chip_soc.append(
+            f'    <button class="chip" data-societa="{html_escape(chiave)}" aria-pressed="true">'
+            f'<span class="dot" style="background:{info["colore"]}"></span>'
+            f'{html_escape(info["etichetta"])}</button>')
+
+    chip_set = []
+    for chiave, info in SETTORI.items():
+        chip_set.append(
+            f'    <button class="chip" data-settore="{chiave}" aria-pressed="true">'
+            f'<span class="dot" style="background:var(--serie-{chiave})"></span>'
+            f'{html_escape(info["etichetta"])}</button>')
+
+    # "consulenza ed eventi (4x4), catering (Latta), ..." per il sottotitolo
+    per_societa = {}
+    for info in SETTORI.values():
+        per_societa.setdefault(info["societa"], []).append(info["etichetta"].lower())
+    pezzi = []
+    for societa, etichette in per_societa.items():
+        if len(etichette) > 1:
+            elenco = ", ".join(etichette[:-1]) + " e " + etichette[-1]
+        else:
+            elenco = etichette[0]
+        pezzi.append(f"{elenco} ({html_escape(societa)})")
+    testo = "; ".join(pezzi)
+
+    return {
+        "__SERIE_CHIARO__": "\n".join(chiaro),
+        "__SERIE_SCURO__": "\n".join(scuro),
+        "__REGOLE_CARD__": "\n".join(regole),
+        "__CHIP_SOCIETA__": "\n".join(chip_soc),
+        "__CHIP_SETTORE__": "\n".join(chip_set),
+        "__SETTORI_TESTO__": testo,
+    }
+
+
 def scrivi_dashboard(payload, destinazione: Path):
     meta = payload["meta"]
     badge = ('<span class="badge-demo">dati dimostrativi</span>'
@@ -473,5 +545,7 @@ def scrivi_dashboard(payload, destinazione: Path):
             .replace("__BADGE__", badge)
             .replace("__SOGLIA__", str(meta.get("soglia", 30)))
             .replace("__AGGIORNATO__", meta.get("aggiornato_testo") or meta.get("aggiornato", "—")))
+    for segnaposto, valore in _blocchi_tema().items():
+        html = html.replace(segnaposto, valore)
     destinazione.write_text(html, encoding="utf-8")
     return destinazione

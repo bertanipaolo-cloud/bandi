@@ -44,8 +44,10 @@ CASI = [
      "Ristorazione", "catering"),
     ("Affidamento del servizio di banqueting per la cena di gala di chiusura del congresso",
      "Servizi di ristorazione", "catering"),
+    # Era "catering" finche' la scuola era in perimetro: dal 17/08/2026 la
+    # mensa scolastica esclude, anche quando il bando parla di centro cottura.
     ("Servizio di ristorazione collettiva mediante centro cottura per la mensa scolastica",
-     "Ristorazione collettiva", "catering"),
+     "Ristorazione collettiva", None),
     ("Fornitura di light lunch e buffet per la giornata di studio del 12 novembre",
      "Servizi di catering", "catering"),
 
@@ -68,8 +70,8 @@ CASI = [
 
     # --- casi reali presi dalla vetrina MePA del 06/08/2026 ---------------
     # (tarature nate guardando i 465 bandi effettivamente aperti quel giorno)
-    ("AFFIDAMENTO DEL SERVIZIO DI REFEZIONE SCOLASTICA.", "Alimenti, ristorazione e buoni pasto", "catering"),
-    ("Servizio di Refezione per le Scuole di Golasecca e per il Micronido", "", "catering"),
+    ("AFFIDAMENTO DEL SERVIZIO DI REFEZIONE SCOLASTICA.", "Alimenti, ristorazione e buoni pasto", None),
+    ("Servizio di Refezione per le Scuole di Golasecca e per il Micronido", "", None),
     ("Acquisto servizio Coffe break presidiato presso l'Università di Trento per 30 persone", "", "catering"),
     ("S028/2026 Accordo quadro avente ad oggetto i servizi di catering per eventi per la Città Metropolitana", "", "catering"),
     ("Concessione del Servizio Bar dell'Organismo di Protezione Sociale del Comando Aeroporto", "", "catering"),
@@ -86,6 +88,44 @@ CASI = [
     ("DSS 66 ACQUISTO MODULEN IBD LATTE POLVERE", "Alimenti, ristorazione e buoni pasto", None),
     ("Copia di FORNITURA SUINI", "Alimenti, ristorazione e buoni pasto", None),
     ("FORNITURA DI MANGIME DEL TIPO SECCO E UMIDO PER ALIMENTAZIONE ANIMALE", "Alimenti", None),
+    # Ristorazione collettiva: fuori perimetro. Il 17/08/2026 era uscito il
+    # solo mondo scuola; il 24/08 Paolo ha tolto "le mense e dintorni", quindi
+    # esce tutta la gestione mensa, comprese aziendale, ospedaliera e i pasti
+    # a domicilio. Latta fa catering d'evento, non ristorazione collettiva.
+    ("Affidamento del servizio di refezione scolastica per le scuole dell'infanzia e primarie", "Servizi di mensa", None),
+    ("Affidamento del servizio di ristorazione scolastica anni 2026/2029", "Servizi di ristorazione", None),
+    ("Gestione della mensa scolastica comunale con centro cottura", "Servizi di mensa", None),
+    ("Fornitura pasti per asilo nido comunale", "Servizi di ristorazione", None),
+    ("Servizio di catering scolastico", "Servizi di catering", None),
+    ("Gestione del servizio di mensa aziendale per i dipendenti dell'ente", "Servizi di mensa", None),
+    ("Servizio di ristorazione ospedaliera e veicolazione pasti ai reparti", "Servizi di ristorazione", None),
+    ("Consegna pasti a domicilio per anziani non autosufficienti", "Servizi di ristorazione", None),
+    # Ma la FORNITURA a quelle stesse mense resta dentro: e' merce, non servizio.
+    ("Fornitura di derrate alimentari per il centro cottura comunale", "Generi alimentari", "alimentari"),
+    ("Fornitura di prodotti ortofrutticoli freschi e biologici", "Ortofrutta", "alimentari"),
+    ("Fornitura di latte e prodotti lattiero caseari", "Alimenti", "alimentari"),
+    # --- forniture: gastronomia (Gabrini) ---
+    ("Fornitura di prodotti di gastronomia e salumeria per il banco", "Gastronomia", "gastronomia"),
+    ("Fornitura di carni fresche e prodotti a base di carne", "Carni", "gastronomia"),
+    ("Fornitura di prodotti di panetteria e pasticceria fresca", "Alimenti", "gastronomia"),
+    # --- forniture: bevande (Berebene) ---
+    ("Fornitura di bevande analcoliche e acque minerali", "Bevande", "bevande"),
+    ("Accordo quadro per la fornitura di birra e bibite in lattina", "Bevande", "bevande"),
+    # --- forniture: vino (Icaro) ---
+    ("Fornitura di vini DOC e IGT per le manifestazioni istituzionali", "Vino", "vino"),
+    ("Servizio di consulenza enologica e analisi enologiche", "Servizi", "vino"),
+    # --- forniture: editoria (Topic) ---
+    ("Fornitura di libri per la biblioteca comunale - incremento del patrimonio librario", "Libri", "editoria"),
+    ("Abbonamenti a periodici e riviste specializzate per l'anno 2027", "Periodici", "editoria"),
+    # --- falsi amici delle forniture, devono restare fuori ---
+    ("Fornitura di mangime per alimentazione animale", "Alimenti", None),
+    ("Fornitura di nutrizione enterale e alimenti a fini medici speciali", "Sanitario", None),
+    ("Fornitura gratuita dei libri di testo mediante cedole librarie", "Libri", None),
+    ("Abbonamento a banche dati e periodici elettronici", "Informatica", None),
+    ("Servizio idrico integrato e manutenzione della rete idrica", "Acqua", None),
+    ("Fornitura e installazione di erogatori di acqua alla spina", "Alimenti", None),
+    ("Gestione della biblioteca comunale e servizio di prestito", "Servizi culturali", None),
+    ("Fornitura di attrezzature da cucina e celle frigorifere", "Attrezzature", None),
     # informatica e privacy travestite da consulenza
     ("Rinnovo e potenziamento di software a supporto del progetto SFIDA2, con servizi di formazione, assistenza e supporto specialistico", "Informatica", None),
     ("SERVIZIO DI SUPPORTO SPECIALISTICO AL DATA PROTECTION OFFICER (DPO) DELL'AZIENDA SANITARIA", "Servizi professionali", None),

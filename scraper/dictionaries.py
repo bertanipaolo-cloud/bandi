@@ -1,17 +1,28 @@
 """
 Dizionari di rilevanza per il radar appalti del gruppo 4x4.
 
-Quattro settori di interesse, divisi fra due societa':
+Nove settori di interesse, divisi fra le otto societa' del gruppo.
 
-  4x4
-  - consulenza    : consulenza aziendale (direzionale, organizzativa, strategica,
-                    formazione, project management, PNRR)
-  - eventi        : organizzazione e gestione di eventi, congressi, fiere, allestimenti
-  - catering      : catering, ristorazione, coffee break, banqueting, mense
+Servizi:
+  4x4       - consulenza    : consulenza aziendale (direzionale, organizzativa,
+                              strategica, formazione, project management, PNRR)
+  4x4       - eventi        : eventi, congressi, fiere, allestimenti
+  Latta     - catering      : catering per eventi, coffee break, banqueting.
+                              NON le mense: la ristorazione collettiva e' fuori
+                              perimetro dal 24/08/2026.
+  Joule     - comunicazione : comunicazione istituzionale, campagne, digital e
+                              social, contenuti, branding, ufficio stampa
 
-  Joule
-  - comunicazione : comunicazione istituzionale, campagne, digital e social, contenuti,
-                    branding e grafica, ufficio stampa e media relations
+Forniture di beni (aggiunte il 24/08/2026):
+  New Food  - alimentari    : derrate, ortofrutta, biologico, lattiero-caseari
+  Gabrini   - gastronomia   : gastronomia pronta, salumeria, carni, forno
+  Berebene  - bevande       : bevande analcoliche, acque minerali, birra
+  Icaro     - vino          : vini e servizi enologici
+  Topic     - editoria      : libri, periodici, patrimonio librario
+
+Il confine fra catering e forniture alimentari e' netto e va tenuto: gestire una
+mensa e' un SERVIZIO (fuori perimetro), vendere le derrate a quella stessa mensa
+e' una FORNITURA (dentro, a New Food o Gabrini).
 
 Ogni settore ha:
   societa   -> a chi va assegnata l'opportunita' in dashboard e nel digest
@@ -247,46 +258,33 @@ SETTORI = {
         ],
     },
     "catering": {
-        "etichetta": "Catering e ristorazione",
-        "societa": "4x4",
+        "etichetta": "Catering per eventi",
+        "societa": "Latta",
         "colore": "#1baf7a",
         "colore_scuro": "#199e70",
         "cpv_query": [
-            "55300", "55310", "55320", "55330", "55400", "55410",
-            "55500", "55510", "55511", "55512",
-            "55520", "55521", "55523", "55524", "15894",
+            "55300", "55310", "55330", "55400", "55410",
+            "55520", "55521", "55523",
         ],
         "cpv": [
             "55520000",  # servizi di catering
             "55521",     # catering per privati / consegna pasti
             "55522000",  # catering per imprese di trasporto
             "55523",     # catering per altre imprese o enti
-            "55524000",  # catering scolastico
             "55300000",  # servizi di ristorazione e mescita
             "55310000",  # servizi di ristorazione con cameriere
-            "55320000",  # servizi di distribuzione pasti
             "55330000",  # servizi di caffetteria
             "55400000",  # servizi di mescita bevande
             "55410000",  # gestione bar
-            "55500000",  # servizi di mensa e catering
-            "55510000",  # servizi di mensa
-            "55511000",  # mensa e altri servizi di caffetteria
-            "55512000",  # gestione mensa
-            "15894200",  # pasti preparati
-            "15894210",  # pasti scolastici
             "15895000",  # prodotti da consumarsi in punti di ristoro
             "15982000",  # bevande analcoliche
-            "42933000",  # distributori automatici
         ],
         "categorie": [
             "ristorazione",
             "catering",
             "servizi di ristorazione",
-            "mensa",
-            "buoni pasto",
             "alimenti",
             "bevande",
-            "generi alimentari",
         ],
         "forti": [
             "servizio di catering", "servizi di catering", "catering",
@@ -295,21 +293,14 @@ SETTORI = {
             "colazione di lavoro", "buffet", "aperitivo", "cocktail",
             "rinfresco", "servizio di rinfresco", "cena di gala", "pranzo di lavoro",
             "somministrazione di alimenti e bevande", "somministrazione alimenti",
-            "servizio di ristorazione", "servizi di ristorazione",
-            "ristorazione collettiva", "ristorazione scolastica",
-            "ristorazione aziendale", "ristorazione ospedaliera",
-            "gestione mensa", "servizio mensa", "mensa aziendale", "mensa scolastica",
-            "preparazione e fornitura pasti", "fornitura di pasti",
-            "veicolazione pasti", "pasti veicolati", "consegna pasti a domicilio",
+            "catering per eventi", "servizio di ristorazione per eventi",
+            "brunch", "open bar", "servizio di sala e cucina per eventi",
             "gestione bar", "gestione punto ristoro", "servizio bar",
-            "cucina interna", "centro cottura",
-            "refezione", "refezione scolastica", "servizio di refezione",
-            "pasti preconfezionati", "vettovagliamento",
             "gestione del servizio di ristoro", "punto ristoro",
         ],
         "deboli": [
             "pasti", "pasto", "cibo", "alimenti", "alimentari", "bevande",
-            "ristoro", "ristorazione", "mensa", "buffet", "bar",
+            "ristoro", "ristorazione", "buffet", "bar",
             "cucina", "cuoco", "chef", "personale di sala", "cameriere",
             "food", "beverage", "menu", "derrate", "derrate alimentari",
             "haccp", "celiachia", "diete speciali",
@@ -317,6 +308,30 @@ SETTORI = {
             "colazione", "pranzo", "cena", "merenda",
         ],
         "esclusioni": [
+            # La ristorazione collettiva esce in blocco (24/08/2026): prima
+            # era uscito il solo mondo scuola, poi Paolo ha tolto "le mense e
+            # dintorni". Gestire una mensa — centro cottura, dietista, appalto
+            # pluriennale — non e' il mestiere di Latta, che fa catering
+            # d'evento. La FORNITURA di cibo a una mensa resta invece dentro,
+            # ma nei settori alimentari e gastronomia: la' si vende merce, qui
+            # si eroga un servizio.
+            "refezione", "refezione scolastica", "servizio di refezione",
+            "ristorazione scolastica", "mensa scolastica", "mense scolastiche",
+            "pasti scolastici", "catering scolastico",
+            "mensa per le scuole", "mensa degli alunni", "mensa alunni",
+            "ristorazione per le scuole", "pasti per le scuole",
+            "scuola dell'infanzia", "scuole dell'infanzia",
+            "asilo nido", "asili nido", "nido comunale",
+            "mensa", "mense", "gestione mensa", "servizio mensa",
+            "mensa aziendale", "mensa ospedaliera", "mensa di servizio",
+            "ristorazione collettiva", "ristorazione aziendale",
+            "ristorazione ospedaliera", "ristorazione assistenziale",
+            "centro cottura", "cucina interna", "cucina centralizzata",
+            "veicolazione pasti", "pasti veicolati", "distribuzione pasti",
+            "consegna pasti a domicilio", "pasti a domicilio",
+            "preparazione e fornitura pasti", "fornitura di pasti",
+            "pasti preconfezionati", "vettovagliamento",
+            "casa di riposo", "residenza sanitaria assistenziale", "rsa",
             "buoni pasto elettronici",  # e' un servizio finanziario, non ristorazione
             "ticket restaurant",
             # il vending e' un altro mestiere: concessioni di distributori
@@ -471,13 +486,301 @@ SETTORI = {
             "mediatore culturale", "mediazione linguistica", "interpretariato",
         ],
     },
+
+    # -----------------------------------------------------------------------
+    # Forniture di beni. Aggiunte il 24/08/2026 insieme alle altre societa'
+    # del gruppo: fino a quel giorno il radar guardava solo i servizi.
+    # Sono un mondo piu' affollato dei servizi — i CPV 15xxx (alimentari) sono
+    # fra i piu' battuti della PA — quindi qui i cancelli CPV vanno tenuti
+    # stretti e le esclusioni sono piu' lunghe delle inclusioni.
+    # -----------------------------------------------------------------------
+
+    "alimentari": {
+        "etichetta": "Forniture alimentari",
+        "societa": "New Food",
+        "colore": "#0d9488",
+        "colore_scuro": "#14b8a6",
+        "cpv_query": [
+            "15300", "15310", "15330", "15331", "15332", "15500", "15510",
+            "15540", "15550", "15600", "15610", "15800", "15810", "15870",
+            "03220", "03221", "03222",
+        ],
+        "cpv": [
+            "15300000",  # frutta, ortaggi e affini
+            "15310000",  # patate e prodotti a base di patate
+            "15330000",  # frutta e ortaggi trasformati
+            "15331",     # ortaggi trasformati / surgelati
+            "15332",     # frutta trasformata, confetture
+            "15500000",  # prodotti lattiero-caseari
+            "15510000",  # latte e panna
+            "15540000",  # formaggi
+            "15550000",  # prodotti lattiero-caseari vari
+            "15600000",  # prodotti di macinazione, cereali, amidi
+            "15610000",  # prodotti della macinazione
+            "15800000",  # prodotti alimentari vari
+            "15810000",  # produzione di pane, pasticceria fresca
+            "15870000",  # condimenti e spezie
+            "03220000",  # ortaggi, frutta e frutta a guscio
+            "03221",     # ortaggi
+            "03222",     # frutta e frutta a guscio
+        ],
+        "categorie": [
+            "alimenti", "generi alimentari", "prodotti alimentari",
+            "ortofrutta", "prodotti ortofrutticoli", "derrate alimentari",
+            "prodotti biologici",
+        ],
+        "forti": [
+            "fornitura di generi alimentari", "fornitura generi alimentari",
+            "fornitura di derrate alimentari", "fornitura derrate",
+            "fornitura di prodotti alimentari", "acquisto di generi alimentari",
+            "derrate alimentari", "generi alimentari",
+            "prodotti ortofrutticoli", "fornitura di ortofrutta",
+            "frutta e verdura", "frutta e ortaggi", "ortaggi freschi",
+            "prodotti biologici", "filiera biologica", "prodotti a km zero",
+            "prodotti a chilometro zero", "prodotti dop e igp",
+            "prodotti lattiero caseari", "fornitura di latte",
+            "fornitura di pane", "prodotti da forno",
+            "alimenti per celiaci", "prodotti senza glutine",
+            "prodotti vegetali", "alimenti vegetali", "prodotti vegani",
+        ],
+        "deboli": [
+            "fornitura", "acquisto", "approvvigionamento", "somministrazione",
+            "alimenti", "alimentari", "food", "biologico", "bio", "fresco",
+            "surgelati", "conserve", "dispensa", "economato",
+            "frutta", "verdura", "ortaggi", "latte", "formaggi", "pane",
+            "accordo quadro", "lotto", "annuale", "triennale",
+        ],
+        "esclusioni": [
+            # non e' cibo per persone
+            "mangime", "alimentazione animale", "crocchette", "pet food",
+            "alimenti zootecnici", "foraggio",
+            # nutrizione clinica: mestiere farmaceutico, non alimentare
+            "nutrizione artificiale", "nutrizione enterale", "nutrizione parenterale",
+            "integratori alimentari", "latte in polvere per lattanti",
+            "alimenti a fini medici speciali", "dietetici per nefropatici",
+            # attrezzature e contorno, non la merce
+            "attrezzature da cucina", "arredi per mensa", "stoviglie",
+            "lavastoviglie", "cella frigorifera", "abbattitore",
+            "trasporto di derrate", "facchinaggio",
+            # i buoni pasto sono un servizio finanziario
+            "buoni pasto", "buoni spesa", "ticket restaurant",
+        ],
+    },
+
+    "gastronomia": {
+        "etichetta": "Gastronomia e retail",
+        "societa": "Gabrini",
+        "colore": "#b45309",
+        "colore_scuro": "#d97706",
+        "cpv_query": [
+            "15100", "15110", "15130", "15131", "15200", "15220", "15230",
+            "15810", "15811", "15812", "15820", "15840", "15850",
+        ],
+        "cpv": [
+            "15100000",  # prodotti di origine animale, carne
+            "15110000",  # carni
+            "15130000",  # prodotti a base di carne
+            "15131",     # conserve e preparati di carne
+            "15200000",  # pesce preparato e conservato
+            "15220000",  # pesce, filetti surgelati
+            "15230000",  # pesce essiccato o affumicato
+            "15810000",  # pane, prodotti di panetteria
+            "15811",     # prodotti di panetteria
+            "15812",     # paste alimentari e dolci
+            "15820000",  # fette biscottate e biscotti
+            "15840000",  # cacao, cioccolato, dolciumi
+            "15850000",  # paste alimentari
+        ],
+        "categorie": [
+            "gastronomia", "salumeria", "carni", "prodotti a base di carne",
+            "prodotti da forno", "pasticceria", "alimenti",
+        ],
+        "forti": [
+            "prodotti di gastronomia", "fornitura di gastronomia",
+            "piatti pronti", "pasti pronti confezionati", "gastronomia pronta",
+            "salumi e formaggi", "fornitura di salumi", "prodotti di salumeria",
+            "fornitura di carni", "carni fresche", "prodotti a base di carne",
+            "fornitura di prodotti ittici", "prodotti ittici",
+            "prodotti di panetteria", "prodotti di pasticceria",
+            "pasticceria fresca", "prodotti dolciari",
+            "fornitura di pizze", "prodotti di rosticceria",
+            "banco gastronomia", "banco salumeria",
+        ],
+        "deboli": [
+            "fornitura", "acquisto", "approvvigionamento",
+            "gastronomia", "salumeria", "rosticceria", "pasticceria",
+            "carne", "carni", "salumi", "formaggi", "pesce", "ittici",
+            "pane", "pizza", "dolci", "biscotti", "pasta",
+            "confezionato", "porzionato", "monoporzione",
+            "accordo quadro", "lotto",
+        ],
+        "esclusioni": [
+            "mangime", "alimentazione animale", "pet food",
+            "macellazione", "impianto di macellazione",
+            "attrezzature da cucina", "banco frigo", "vetrina refrigerata",
+            "buoni pasto", "ticket restaurant",
+            "smaltimento", "sottoprodotti di origine animale",
+        ],
+    },
+
+    "bevande": {
+        "etichetta": "Bevande e distribuzione",
+        "societa": "Berebene",
+        "colore": "#0891b2",
+        "colore_scuro": "#22d3ee",
+        "cpv_query": [
+            "15900", "15910", "15960", "15961", "15980", "15981", "15982",
+        ],
+        "cpv": [
+            "15900000",  # bevande, tabacco e prodotti affini
+            "15960000",  # birra di malto
+            "15961",     # birra
+            "15980000",  # bevande analcoliche
+            "15981",     # acque minerali
+            "15982000",  # bevande analcoliche varie
+        ],
+        "categorie": [
+            "bevande", "acque minerali", "birra", "alimenti",
+        ],
+        "forti": [
+            "fornitura di bevande", "fornitura bevande", "acquisto di bevande",
+            "bevande analcoliche", "acqua minerale", "fornitura di acqua minerale",
+            "acque minerali", "bibite", "fornitura di birra",
+            "distribuzione di bevande", "logistica delle bevande",
+            "fornitura di succhi", "bevande calde e fredde in confezione",
+        ],
+        "deboli": [
+            "bevande", "acqua", "bibite", "birra", "succhi", "analcoliche",
+            "fornitura", "distribuzione", "consegna", "approvvigionamento",
+            "bottiglie", "lattine", "fusti", "accordo quadro", "lotto",
+        ],
+        "esclusioni": [
+            # il vending e' un altro mestiere: c'e' gia' un settore per il resto
+            "distributori automatici", "distributore automatico",
+            "distribuzione automatica", "erogatori di acqua", "erogatore di acqua",
+            "erogatori d'acqua", "casette dell'acqua",
+            # non e' la bevanda, e' la rete idrica
+            "servizio idrico", "acquedotto", "rete idrica", "potabilizzazione",
+            "fornitura di acqua potabile mediante autobotte", "autobotte",
+            "analisi delle acque", "acqua per uso industriale",
+            # bar e mescita sono servizi, stanno nel catering
+            "gestione bar", "servizio bar", "mescita",
+            "attrezzature per la refrigerazione",
+        ],
+    },
+
+    "vino": {
+        "etichetta": "Vino ed enologia",
+        "societa": "Icaro",
+        "colore": "#9d174d",
+        "colore_scuro": "#be185d",
+        "cpv_query": [
+            "15930", "15931", "15932", "15940", "15950",
+        ],
+        "cpv": [
+            "15930000",  # vini
+            "15931",     # vini non aromatizzati
+            "15932000",  # fecce di vino
+            "15940000",  # sidro e altri vini di frutta
+            "15950000",  # bevande fermentate non distillate
+        ],
+        "categorie": [
+            "vino", "vini", "bevande alcoliche", "alimenti",
+        ],
+        "forti": [
+            "fornitura di vino", "fornitura di vini", "acquisto di vino",
+            "vini doc", "vini docg", "vini igt", "vino sfuso",
+            "vini da tavola", "cantina sociale", "prodotti vitivinicoli",
+            "promozione del vino", "degustazione di vini", "carta dei vini",
+            "servizi enologici", "consulenza enologica", "analisi enologiche",
+            "vendemmia", "vinificazione", "imbottigliamento del vino",
+        ],
+        "deboli": [
+            "vino", "vini", "vitivinicolo", "enologia", "enologico",
+            "cantina", "uve", "vigneto", "degustazione", "sommelier",
+            "fornitura", "acquisto", "lotto", "accordo quadro",
+        ],
+        "esclusioni": [
+            # il vigneto come opera agricola non e' vendita di vino
+            "impianto di vigneto", "reimpianto viticolo", "potatura",
+            "trattamenti fitosanitari", "macchine agricole",
+            "estirpazione", "diserbo",
+            # alcolici che non sono vino
+            "superalcolici", "distillati", "liquori", "grappa",
+            "alcool etilico", "alcol denaturato",
+            # concessioni di somministrazione
+            "licenza di somministrazione", "gestione enoteca",
+        ],
+    },
+
+    "editoria": {
+        "etichetta": "Editoria e libri",
+        "societa": "Topic",
+        "colore": "#475569",
+        "colore_scuro": "#94a3b8",
+        "cpv_query": [
+            "22110", "22111", "22112", "22113", "22114", "22120", "22200",
+            "22210", "92511",
+        ],
+        "cpv": [
+            "22110000",  # libri stampati
+            "22111000",  # libri scolastici
+            "22112000",  # libri di testo
+            "22113000",  # libri per biblioteche
+            "22114",     # dizionari, mappe, spartiti, altri libri
+            "22120000",  # pubblicazioni
+            "22200000",  # giornali, riviste, periodici
+            "22210000",  # giornali
+            "92511000",  # servizi di biblioteche
+        ],
+        "categorie": [
+            "libri", "editoria", "pubblicazioni", "periodici",
+            "prodotti editoriali", "servizi bibliotecari",
+        ],
+        "forti": [
+            "fornitura di libri", "acquisto di libri", "fornitura libri",
+            "libri per la biblioteca", "incremento del patrimonio librario",
+            "patrimonio librario", "materiale librario", "volumi a stampa",
+            "fornitura di volumi", "acquisto di volumi",
+            "abbonamenti a periodici", "abbonamenti a riviste",
+            "fornitura di periodici", "riviste specializzate",
+            "pubblicazioni scientifiche", "editoria specializzata",
+            "cataloghi d'arte", "catalogo della mostra",
+            "servizio di edizione", "stampa del catalogo",
+            "libri d'arte", "monografie",
+        ],
+        "deboli": [
+            "libri", "libro", "volumi", "editoria", "editoriale",
+            "pubblicazione", "pubblicazioni", "riviste", "periodici",
+            "abbonamento", "abbonamenti", "catalogo", "collana",
+            "biblioteca", "biblioteche", "patrimonio librario",
+            "fornitura", "acquisto", "lotto", "accordo quadro",
+        ],
+        "esclusioni": [
+            # i libri di testo scolastici gratuiti sono una partita
+            # amministrativa del comune, non una fornitura editoriale
+            "cedole librarie", "cedola libraria", "libri di testo gratuiti",
+            "fornitura gratuita dei libri di testo",
+            # banche dati e periodici elettronici: mestiere da aggregatore
+            "banche dati", "banca dati", "risorse elettroniche",
+            "periodici elettronici", "e-book", "piattaforma digitale",
+            "abbonamento software", "licenze",
+            # la gestione della biblioteca e' un servizio, non una fornitura
+            "gestione della biblioteca", "servizio di prestito",
+            "catalogazione", "riordino archivistico", "archivio storico",
+            "digitalizzazione del patrimonio",
+            # tipografia: si stampa per conto terzi, non si vende un libro
+            "stampa tipografica", "tipografia", "fornitura di stampati",
+            "stampa di modulistica",
+        ],
+    },
 }
 
 # Ordine di visualizzazione e appartenenza societaria.
 SOCIETA = {
     "4x4": {
         "etichetta": "4x4",
-        "descrizione": "consulenza, eventi e catering",
+        "descrizione": "consulenza ed eventi",
         "colore": "#2a78d6",
     },
     "Joule": {
@@ -485,7 +788,49 @@ SOCIETA = {
         "descrizione": "comunicazione e marketing",
         "colore": "#8b5cf6",
     },
+    "Latta": {
+        "etichetta": "Latta",
+        "descrizione": "catering per eventi",
+        "colore": "#1baf7a",
+    },
+    "New Food": {
+        "etichetta": "New Food",
+        "descrizione": "forniture alimentari",
+        "colore": "#0d9488",
+    },
+    "Gabrini": {
+        "etichetta": "Gabrini",
+        "descrizione": "gastronomia e retail alimentare",
+        "colore": "#b45309",
+    },
+    "Berebene": {
+        "etichetta": "Berebene",
+        "descrizione": "bevande e distribuzione",
+        "colore": "#0891b2",
+    },
+    "Icaro": {
+        "etichetta": "Icaro",
+        "descrizione": "vino ed enologia",
+        "colore": "#9d174d",
+    },
+    "Topic": {
+        "etichetta": "Topic",
+        "descrizione": "editoria e libri",
+        "colore": "#475569",
+    },
 }
+
+
+def slug_societa(societa):
+    """
+    Nome della societa' ridotto a etichetta di file e di variabile d'ambiente.
+    "New Food" -> "new-food" (file) e NEW_FOOD (env). Serve perche' dal
+    24/08/2026 le societa' sono otto e i nomi contengono spazi.
+    """
+    fuori = []
+    for carattere in (societa or "").lower():
+        fuori.append(carattere if carattere.isalnum() else "-")
+    return "-".join(pezzo for pezzo in "".join(fuori).split("-") if pezzo)
 
 
 def societa_di(settore):

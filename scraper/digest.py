@@ -2,24 +2,25 @@
 Corpo dell'email settimanale: solo le novità e le scadenze imminenti.
 HTML sobrio, compatibile con i client di posta (tabelle e stili inline).
 
-Da agosto 2026 il digest e' diviso per societa': 4x4 (consulenza, eventi,
-catering) e Joule (comunicazione e marketing). Oltre al riepilogo completo
-viene scritto un digest per singola societa', cosi' si puo' mandare a Joule
-solo quello che la riguarda (vedi invia_email.py, variabile MAIL_TO_JOULE).
+Il digest e' diviso per societa': dal 24/08/2026 sono otto (4x4, Joule, Latta,
+New Food, Gabrini, Berebene, Icaro, Topic). Oltre al riepilogo completo viene
+scritto un digest per singola societa', cosi' a ciascuna arriva solo quello che
+la riguarda (vedi invia_email.py, variabili MAIL_TO_<SOCIETA>).
 
 Dentro ogni sezione le **manifestazioni d'interesse** vengono prima delle gare:
 sono l'unico momento in cui si entra in una procedura negoziata, e hanno
 termini corti.
 """
 
+import sys
 from pathlib import Path
 
-COLORI = {
-    "consulenza": "#2a78d6",
-    "eventi": "#eb6834",
-    "catering": "#1baf7a",
-    "comunicazione": "#8b5cf6",
-}
+sys.path.insert(0, str(Path(__file__).parent))
+from dictionaries import SETTORI, slug_societa  # noqa: E402
+
+# I colori vengono dai dizionari, non riscritti a mano: erano quattro fissi e
+# con nove settori i cinque nuovi sarebbero rimasti grigi nel digest.
+COLORI = {chiave: info["colore"] for chiave, info in SETTORI.items()}
 
 FONT = "system-ui,-apple-system,Segoe UI,sans-serif"
 
@@ -124,7 +125,7 @@ def costruisci(payload, societa=None):
                    "imminente fra quelle già segnalate.</p>")
 
     if societa is None:
-        titolo = "Radar appalti · 4x4 e Joule"
+        titolo = "Radar appalti · gruppo 4x4"
         riepilogo = " · ".join(
             f"{v['etichetta']}: {v['totale']}" for v in (meta.get("per_societa") or {}).values())
         totale_aperte = meta["attivi"]
@@ -190,13 +191,14 @@ def _oggetto(payload, societa=None):
 def scrivi_digest(payload, destinazione: Path):
     """
     Scrive il digest complessivo e, accanto, uno per societa'
-    (digest.4x4.html, digest.Joule.html) con il rispettivo oggetto.
+    (digest.4x4.html, digest.new-food.html, ...) con il rispettivo oggetto.
     """
     destinazione.write_text(costruisci(payload), encoding="utf-8")
     destinazione.with_suffix(".oggetto.txt").write_text(_oggetto(payload), encoding="utf-8")
 
     for societa in (payload["meta"].get("per_societa") or {}):
-        parziale = destinazione.with_name(f"{destinazione.stem}.{societa}.html")
+        parziale = destinazione.with_name(
+            f"{destinazione.stem}.{slug_societa(societa)}.html")
         parziale.write_text(costruisci(payload, societa), encoding="utf-8")
         parziale.with_suffix(".oggetto.txt").write_text(
             _oggetto(payload, societa), encoding="utf-8")
