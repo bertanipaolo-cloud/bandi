@@ -306,7 +306,7 @@
     },
     "portale:appalti.comune.barletta.bt.it:Albo comunale degli Operatori Culturali e di Spettacolo": {
       "primo_avvistamento": "2026-08-17",
-      "ultimo_avvistamento": "2026-08-17",
+      "ultimo_avvistamento": "2026-08-24",
       "titolo": "Albo comunale degli Operatori Culturali e di Spettacolo",
       "settore": "eventi",
       "punteggio": 76,
@@ -338,7 +338,7 @@
     },
     "6750c70a4d3849f5": {
       "primo_avvistamento": "2026-08-17",
-      "ultimo_avvistamento": "2026-08-17",
+      "ultimo_avvistamento": "2026-08-24",
       "titolo": "Concessione del Servizio Bar dell’Organismo di Protezione Sociale (OPS) del Comando Aeroporto di Cameri denominato “Sala Convengo per Ufficiali, Sottufficiali, ",
       "settore": "catering",
       "punteggio": 74,
@@ -530,7 +530,7 @@
     },
     "225e7124b72d44e8": {
       "primo_avvistamento": "2026-08-17",
-      "ultimo_avvistamento": "2026-08-17",
+      "ultimo_avvistamento": "2026-08-24",
       "titolo": "affidamento del servizio integrato di supporto tecnico-specialistico per la programmazione, progettazione, selezione, formazione, gestione, monitoraggio e valut",
       "settore": "consulenza",
       "punteggio": 57,
@@ -578,7 +578,7 @@
     },
     "9162c7213b7bafd5": {
       "primo_avvistamento": "2026-08-17",
-      "ultimo_avvistamento": "2026-08-17",
+      "ultimo_avvistamento": "2026-08-24",
       "titolo": "servizi di rassegna stampa e monitoraggio file multimediali, radiofonici e televisivi, per la durata di 24 mesi, dal 1° gennaio 2027 al 31 dicembre 2028, per le",
       "settore": "comunicazione",
       "punteggio": 50,
@@ -778,7 +778,7 @@
       "titolo": "GARA EUROPEA A PROCEDURA APERTA PER L'APPALTO RELATIVO AL SERVIZIO DI COMUNICAZIONE TURISTICA INTEGRATA PER RAVENNA",
       "settore": "comunicazione",
       "punteggio": 93,
-      "ultimo_avvistamento": "2026-08-17"
+      "ultimo_avvistamento": "2026-08-24"
     },
     "anac:78c6c9f9-a816-4c90-8f74-272da420cb02": {
       "primo_avvistamento": "2026-08-17",
@@ -1065,7 +1065,7 @@
       "titolo": "6236827 - lotto 1 AREA TERRITORIALE GORIZIA E PROVINCIA",
       "settore": "consulenza",
       "punteggio": 47,
-      "ultimo_avvistamento": "2026-08-17"
+      "ultimo_avvistamento": "2026-08-24"
     },
     "anac:f2dc8535-425d-41bc-acb0-e806485ffb41": {
       "primo_avvistamento": "2026-08-17",
@@ -1087,6 +1087,238 @@
       "settore": "comunicazione",
       "punteggio": 37,
       "ultimo_avvistamento": "2026-08-17"
+    },
+    "anac:dd23de9d-dcb1-4469-bb84-52a5b703bef7": {
+      "primo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-24",
+      "titolo": "LOTTO 1 FRUTTA VERDURE E LEGUMI-Procedura aperta telematica, ai sensi dell’art. 71 del D. Lgs. 36/2023, sottosoglia di rilevanza europea, per l’affidam. della f",
+      "settore": "alimentari",
+      "punteggio": 100,
+      "scadenza": "2026-09-10"
+    },
+    "anac:444cd053-4952-433e-888e-8839ffbb3ab7": {
+      "primo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-24",
+      "titolo": "SERVIZIO DI COMUNICAZIONE ISTITUZIONALE",
+      "settore": "comunicazione",
+      "punteggio": 93,
+      "scadenza": "2026-09-24"
+    },
+    "a44092542835bcf1": {
+      "primo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-24",
+      "titolo": "AFFIDAMENTO IN CONCESSIONE SERVIZIO BAR PRESSO LA CASERMA \"DE GENNARO\" FORLI'",
+      "settore": "catering",
+      "punteggio": 74,
+      "scadenza": "2026-09-29"
+    },
+    "eb61606d1e8b2693": {
+      "primo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-24",
+      "titolo": "Concessione per la durata di n. tre anni del servizio di erogazione di bevande calde e fredde, snack dolci e salati, nonché altri generi alimentari tramite dist",
+      "settore": "alimentari",
+      "punteggio": 63,
+      "scadenza": "2026-09-13"
+    },
+    "2d5ed5f8ad9123b8": {
+      "primo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-24",
+      "titolo": "Servizio di organizzazione e gestione laboratorio digitale per la produzione di contenuti multimediali finalizzati alla sensibilizzazione della legalità nell'am",
+      "settore": "comunicazione",
+      "punteggio": 57,
+      "scadenza": "2026-09-14"
+    },
+    "980e74e3cb72f2f8": {
+      "primo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-24",
+      "titolo": "Procedura Negoziata per l’affidamento del servizio telematico di rassegna stampa e monitoraggio media comprensivo di rilevazioni radiotelevisive, web e trasmiss",
+      "settore": "comunicazione",
+      "punteggio": 50,
+      "scadenza": "2026-09-14"
+    },
+    "62cfb09f315c0073": {
+      "primo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-24",
+      "titolo": "Servizio relativo lo studio di fattibilità, definizione interventi di adeguamento, assistenza tecnica e asseverazione finale di macchine utensili presso officin",
+      "settore": "consulenza",
+      "punteggio": 46,
+      "scadenza": "2026-09-04"
+    },
+    "anac:4056adb0-3ecf-4e6b-b1ae-1340e80c008b": {
+      "primo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-24",
+      "titolo": "6519556 - AFFIDAMENTO IN CONCESSIONE BAR",
+      "settore": "catering",
+      "punteggio": 30,
+      "scadenza": "2026-09-28"
+    },
+    "anac:34572bd2-580f-4497-8d15-8610f8e5177c": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "FORNITURA GENERI ALIMENTARI MENSA SCOLASTICA E CENTRO INFANZIA - GENERI ALIMENTARI VARI",
+      "settore": "alimentari",
+      "punteggio": 100,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:3452e2a1-84c3-4c2d-a5d7-ec7ed08d4085": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "FORNITURA GENERI ALIMENTARI MENSA SCOLASTICA E CENTRO INFANZIA - GENERI ALIMENTARI VARI",
+      "settore": "alimentari",
+      "punteggio": 100,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:1ff32813-b864-43ee-9cbe-11e86de560ef": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "FORNITURA GENERI ALIMENTARI MENSA SCOLASTICA E CENTRO INFANZIA - GENERI ALIMENTARI VARI",
+      "settore": "alimentari",
+      "punteggio": 100,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:2e2eb163-d93d-4996-85c1-d9a3a0dc807c": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "FORNITURA GENERI ALIMENTARI MENSA SCOLASTICA E CENTRO INFANZIA - GENERI ALIMENTARI VARI",
+      "settore": "alimentari",
+      "punteggio": 100,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:c5ac9128-bcc2-49d7-8658-24b50c0b6e11": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "FORNITURA GENERI ALIMENTARI MENSA SCOLASTICA E CENTRO INFANZIA - GENERI ALIMENTARI VARI",
+      "settore": "alimentari",
+      "punteggio": 100,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:26952d2f-d0c0-414d-afd7-4def398eec6b": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "FORNITURA GENERI ALIMENTARI MENSA SCOLASTICA E CENTRO INFANZIA - GENERI ALIMENTARI VARI",
+      "settore": "alimentari",
+      "punteggio": 100,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:bcef7a01-a190-4ba4-9fa5-ae5f89b8214c": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "FORNITURA DI LIBRI DA ACQUISTARE TRAMITE CATALOGO ON-LINE PER LA BIBLIOTECA DI CLES ANNO 2025",
+      "settore": "editoria",
+      "punteggio": 100,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:ea9c74f7-bab8-40f2-99c8-ffe31efb3b77": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "Concessione del servizio di somministrazione di alimenti e bevande presso il Centro sportivo PALATRENTO BTS ARENA",
+      "settore": "catering",
+      "punteggio": 100,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:ac4ce7a5-54ea-4c3c-9e9c-f13bbed15a07": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "FORNITURA DI LIBRI E MATERIALE DOCUMENTARIO PER LA BIBLIOTECA COMUNALE DI CLES",
+      "settore": "editoria",
+      "punteggio": 97,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:1ea3c611-c686-4697-8f6b-eac8cb242c75": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "Procedura aperta per l affidamento del servizio di strategia creativa e media planning per il nuovo City Branding turistico di Roma Capitale, nell ambito dell A",
+      "settore": "comunicazione",
+      "punteggio": 97,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:5c9d1aed-e0b2-4fcc-8923-a7d3abeb3f8b": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "Procedura aperta per l affidamento del servizio di strategia creativa e media planning per il nuovo City Branding turistico di Roma Capitale, nell ambito dell A",
+      "settore": "comunicazione",
+      "punteggio": 97,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:35e7f133-0283-4dfb-ab74-668d5132d78a": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "spettacoli musicali in occasione delle manifestazioni Cristo Signore della Montagna e festa di San Calogero 19 e 21 agosto 2026",
+      "settore": "eventi",
+      "punteggio": 97,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:417f083b-dcde-4482-a52d-b85447965134": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "AFFIDAMENTO FORNITURA GENERI ALIMENTARI PER L'AZIENDA SERVIZI ALLA PERSONA DEL BASSO LODIGIANO DI CODOGNO",
+      "settore": "alimentari",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:2ca3f060-ecf3-4452-acb8-3902ebaa8f31": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "Servizio di supporto specialistico finanziario per l'aggiornamento del financial model del project bond e adempimenti connessi nonché, in ambito regolatorio ART",
+      "settore": "consulenza",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:3e0c36d7-97c9-4bc5-8adb-c2b33af9d93f": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "Affidamento del servizio di realizzazione dello spettacolo teatrale \"U SAPITI COM'E'\" in occasione eventi \"SUMMER FEST 2026\"",
+      "settore": "eventi",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:4cd7343e-b939-41bf-9885-7313f5de9fd1": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "AFFIDAMENTO SERVIZIO DI NOLEGGIO PALCHI, TRIBUNE, GRUPPI ELETTROGENI E SEDIE IN OCCASIONE MANIFESTAZIONE \"PALIO DEI NORMANNI 2026\"",
+      "settore": "eventi",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:ffaeb259-d522-40a3-8e7b-f461f3b8a161": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "Servizi di comunicazione servizio BRT per conto del Comune di Frosinone",
+      "settore": "comunicazione",
+      "punteggio": 90,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:61e838c9-e740-4801-9bd1-f48a72977e68": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "Servizi di comunicazione integrata",
+      "settore": "comunicazione",
+      "punteggio": 90,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:e82687f1-b40f-4de0-97fd-2c935d9c55bf": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "AFFIDAMENTO DELLA REALIZZAZIONE DEL SITO WEB DELL’EDISU DI PAVIA",
+      "settore": "comunicazione",
+      "punteggio": 72,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:cac27500-6a62-419e-87fb-1a420e778e5c": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "Concessione servizio di gestione bar e rivendita giornali e riviste nel presidio ospedaliero \"San Salvatore\" di Pesaro (PU).",
+      "settore": "catering",
+      "punteggio": 69,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:ba0afa80-8668-4a0a-860e-d6e6bfffc3a3": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "spettacolo musicale DANCE TARANTELLA del 21 agosto 2026",
+      "settore": "eventi",
+      "punteggio": 69,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:cfcc774f-3adc-4fef-ac4f-b87d372c844c": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "Affidamento diretto per lo spettacolo del DJ set Damante",
+      "settore": "eventi",
+      "punteggio": 69,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:ee80fe63-40b3-4da1-985f-a9698aa0cee9": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "OGGETTO: RICHIESTA DI OFFERTA PER TRATTATIVA DIRETTA (TD) SU MEPA(AI SENSI DELL’ART. 50, COMMA 1, LETT. B) DEL D.LGS. 31 MARZO 2023, N. 36) PROGRAMMA OPERATIVO ",
+      "settore": "comunicazione",
+      "punteggio": 61,
+      "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:12eb5adc-8d2d-486a-ac84-8d6f9589d0f0": {
+      "primo_avvistamento": "2026-08-24",
+      "titolo": "FORMAZIONE",
+      "settore": "consulenza",
+      "punteggio": 47,
+      "ultimo_avvistamento": "2026-08-24"
     }
   },
   "run": [
@@ -1097,6 +1329,14 @@
       "attivi": 77,
       "nuovi": 77,
       "esiti": 64
+    },
+    {
+      "quando": "2026-08-24T17:56:54.639160+00:00",
+      "esaminati": 583,
+      "pertinenti": 12,
+      "attivi": 12,
+      "nuovi": 8,
+      "esiti": 26
     }
   ]
 }

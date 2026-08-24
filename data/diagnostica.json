@@ -1,10 +1,10 @@
 {
-  "quando": "2026-08-17T11:16:09.097806+00:00",
+  "quando": "2026-08-24T17:55:50.290974+00:00",
   "fasi": [
     {
       "fase": "endpoint_diretto",
-      "items": 488
+      "errore": "APIRequestContext.fetch: socket hang up\nCall log:\n  - → POST https://www.acquistinretepa.it/publicservices/vetrineservices/getAltriBandiRdoAperte\n    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36\n    - accept: appl"
     }
   ],
-  "totale_normalizzati": 488
+  "totale_normalizzati": 400
 }
