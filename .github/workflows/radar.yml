@@ -59,12 +59,20 @@ jobs:
       # I portali degli enti aggiungono cio' che su ANAC non arriva: richieste
       # di preventivo prima di un affidamento diretto e albi fornitori aperti.
       # Il registro dei portali si popola da solo dai link di gara di ANAC.
+      # Doppia cintura sul tempo. Dentro, lo script si ferma da solo a 10
+      # minuti e salva quello che ha raccolto; fuori, il passo viene ucciso a
+      # 12. Senza il tetto esterno un blocco della rete si mangerebbe tutto il
+      # budget del job (successo il 17/08/2026: 29 minuti qui, e MePA,
+      # classificazione e pubblicazione mai eseguiti).
       - name: Scarica gli avvisi dai Portale Appalti degli enti
         id: portali
         continue-on-error: true
+        timeout-minutes: 12
         env:
           MAX_PORTALI: ${{ github.event.inputs.max_portali || '60' }}
-        run: python scraper/fetch_portali.py --scopri --max-portali "$MAX_PORTALI"
+        run: |
+          python scraper/fetch_portali.py --scopri \
+            --max-portali "$MAX_PORTALI" --budget-minuti 10
 
       - name: Scarica le RDO aperte dal MePA
         id: mepa
