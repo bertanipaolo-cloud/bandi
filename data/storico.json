@@ -306,7 +306,7 @@
     },
     "portale:appalti.comune.barletta.bt.it:Albo comunale degli Operatori Culturali e di Spettacolo": {
       "primo_avvistamento": "2026-08-17",
-      "ultimo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-31",
       "titolo": "Albo comunale degli Operatori Culturali e di Spettacolo",
       "settore": "eventi",
       "punteggio": 76,
@@ -338,7 +338,7 @@
     },
     "6750c70a4d3849f5": {
       "primo_avvistamento": "2026-08-17",
-      "ultimo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-31",
       "titolo": "Concessione del Servizio Bar dell’Organismo di Protezione Sociale (OPS) del Comando Aeroporto di Cameri denominato “Sala Convengo per Ufficiali, Sottufficiali, ",
       "settore": "catering",
       "punteggio": 74,
@@ -346,7 +346,7 @@
     },
     "b66d2e413144ba46": {
       "primo_avvistamento": "2026-08-17",
-      "ultimo_avvistamento": "2026-08-17",
+      "ultimo_avvistamento": "2026-08-31",
       "titolo": "Servizio di ideazione, progettazione, produzione e gestione del programma culturale e degli eventi collaterali di animazione in occasione delle “Nitto ATP Final",
       "settore": "eventi",
       "punteggio": 74,
@@ -498,7 +498,7 @@
     },
     "bab2a77d5398b25c": {
       "primo_avvistamento": "2026-08-17",
-      "ultimo_avvistamento": "2026-08-17",
+      "ultimo_avvistamento": "2026-08-31",
       "titolo": "S028/2026 Accordo quadro  avente ad oggetto i servizi di catering per eventi per la Città Metropolitana di Napoli",
       "settore": "catering",
       "punteggio": 70,
@@ -578,7 +578,7 @@
     },
     "9162c7213b7bafd5": {
       "primo_avvistamento": "2026-08-17",
-      "ultimo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-31",
       "titolo": "servizi di rassegna stampa e monitoraggio file multimediali, radiofonici e televisivi, per la durata di 24 mesi, dal 1° gennaio 2027 al 31 dicembre 2028, per le",
       "settore": "comunicazione",
       "punteggio": 50,
@@ -1106,7 +1106,7 @@
     },
     "a44092542835bcf1": {
       "primo_avvistamento": "2026-08-24",
-      "ultimo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-31",
       "titolo": "AFFIDAMENTO IN CONCESSIONE SERVIZIO BAR PRESSO LA CASERMA \"DE GENNARO\" FORLI'",
       "settore": "catering",
       "punteggio": 74,
@@ -1114,7 +1114,7 @@
     },
     "eb61606d1e8b2693": {
       "primo_avvistamento": "2026-08-24",
-      "ultimo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-31",
       "titolo": "Concessione per la durata di n. tre anni del servizio di erogazione di bevande calde e fredde, snack dolci e salati, nonché altri generi alimentari tramite dist",
       "settore": "alimentari",
       "punteggio": 63,
@@ -1122,7 +1122,7 @@
     },
     "2d5ed5f8ad9123b8": {
       "primo_avvistamento": "2026-08-24",
-      "ultimo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-31",
       "titolo": "Servizio di organizzazione e gestione laboratorio digitale per la produzione di contenuti multimediali finalizzati alla sensibilizzazione della legalità nell'am",
       "settore": "comunicazione",
       "punteggio": 57,
@@ -1130,7 +1130,7 @@
     },
     "980e74e3cb72f2f8": {
       "primo_avvistamento": "2026-08-24",
-      "ultimo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-31",
       "titolo": "Procedura Negoziata per l’affidamento del servizio telematico di rassegna stampa e monitoraggio media comprensivo di rilevazioni radiotelevisive, web e trasmiss",
       "settore": "comunicazione",
       "punteggio": 50,
@@ -1138,7 +1138,7 @@
     },
     "62cfb09f315c0073": {
       "primo_avvistamento": "2026-08-24",
-      "ultimo_avvistamento": "2026-08-24",
+      "ultimo_avvistamento": "2026-08-31",
       "titolo": "Servizio relativo lo studio di fattibilità, definizione interventi di adeguamento, assistenza tecnica e asseverazione finale di macchine utensili presso officin",
       "settore": "consulenza",
       "punteggio": 46,
@@ -1241,7 +1241,7 @@
       "titolo": "AFFIDAMENTO FORNITURA GENERI ALIMENTARI PER L'AZIENDA SERVIZI ALLA PERSONA DEL BASSO LODIGIANO DI CODOGNO",
       "settore": "alimentari",
       "punteggio": 93,
-      "ultimo_avvistamento": "2026-08-24"
+      "ultimo_avvistamento": "2026-08-31"
     },
     "anac:2ca3f060-ecf3-4452-acb8-3902ebaa8f31": {
       "primo_avvistamento": "2026-08-24",
@@ -1297,7 +1297,7 @@
       "titolo": "spettacolo musicale DANCE TARANTELLA del 21 agosto 2026",
       "settore": "eventi",
       "punteggio": 69,
-      "ultimo_avvistamento": "2026-08-24"
+      "ultimo_avvistamento": "2026-08-31"
     },
     "anac:cfcc774f-3adc-4fef-ac4f-b87d372c844c": {
       "primo_avvistamento": "2026-08-24",
@@ -1319,6 +1319,312 @@
       "settore": "consulenza",
       "punteggio": 47,
       "ultimo_avvistamento": "2026-08-24"
+    },
+    "anac:f59e9d88-58b1-442f-af42-aad1442241b5": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "PROCEDURA APERTA MULTILOTTO PER L’AFFIDAMENTO DELLA FORNITURA BIENNALE DI DERRATE ALIMENTARI MEDIANTE SOTTOSCRIZIONE DI UN ACCORDO QUADRO CON UN UNICO FORNITORE",
+      "settore": "alimentari",
+      "punteggio": 97,
+      "scadenza": "2026-08-31"
+    },
+    "anac:debd54a0-4dc0-40b4-8035-8cce2da467a4": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "Procedura aperta per l'affidamento del \"Servizio veicolato di refezione scolastica nelle scuole dellinfanzia e primarie statali (lotto 1)\" e della \"Fornitura di",
+      "settore": "alimentari",
+      "punteggio": 97,
+      "scadenza": "2026-09-14"
+    },
+    "anac:c9a12be8-68f3-4566-a4dc-351ad73cba8c": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "Accordo Quadro per Servizi Di Catering da prestare in occasione di corsi formativi, eventi, incontri o riunioni istituzionali, convegni o seminari che si terran",
+      "settore": "catering",
+      "punteggio": 90,
+      "scadenza": "2026-10-26"
+    },
+    "28e3252007da8a0f": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "Procedura di affidamento diretto, ai sensi dell’art. 50, comma 1, lett. b) del D.lgs 36/2023, tramite Richiesta di Offerta (di seguito RdO) di tipo “aperta” sul",
+      "settore": "eventi",
+      "punteggio": 70,
+      "scadenza": "2026-09-18"
+    },
+    "anac:e9356071-948e-49a6-ba6f-a0dd4853cd5a": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "Concessione del servizio bar con gestione completa da eseguirsi nel locale ubicato presso la stazione a monte della funicolare di Castel San Pietro a Verona pre",
+      "settore": "catering",
+      "punteggio": 69,
+      "scadenza": "2026-09-28"
+    },
+    "anac:b986e6d2-ca2b-4ef7-8a06-3fb25759ee6e": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "Servizio bar",
+      "settore": "catering",
+      "punteggio": 69,
+      "scadenza": "2026-09-30"
+    },
+    "anac:216ec1e0-735b-4e3d-a715-be874e827285": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "CONCESSIONE DEL SERVIZIO DI GESTIONE DEL BAR – MINIMARKET E RIVENDITA GIORNALI E RIVISTE DELL’OSPEDALE",
+      "settore": "catering",
+      "punteggio": 69,
+      "scadenza": "2026-10-30"
+    },
+    "6c2f8dbfcef34538": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "FORNITURA DERRATE ALIMENTARI PER LE MENSE SCOLASTICHE PER IL PERIODO DAL 1° OTTOBRE 2026 AL 31 LUGLIO 2027 CON FACOLTA' DI RINNOVO PER UN ULTERIORE ANNO (PERIOD",
+      "settore": "alimentari",
+      "punteggio": 67,
+      "scadenza": "2026-09-21"
+    },
+    "anac:a93d2cb8-fbe1-4d33-8eda-1dbd470860e7": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "MACELLERIA - SALUMI",
+      "settore": "alimentari",
+      "punteggio": 61,
+      "scadenza": "2026-09-12"
+    },
+    "anac:56f730ef-2ea3-4397-acf5-f558e29996ff": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "DPD022_2026_ServiziMarineria",
+      "settore": "comunicazione",
+      "punteggio": 57,
+      "scadenza": "2026-09-21"
+    },
+    "b607ebb920ae8a67": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "Servizio in Cloud fornitura libri di testo - buoni libro a.s. 2026/2027-2027-2028",
+      "settore": "editoria",
+      "punteggio": 50,
+      "scadenza": "2026-09-06"
+    },
+    "afa64573461b78c6": {
+      "primo_avvistamento": "2026-08-31",
+      "ultimo_avvistamento": "2026-08-31",
+      "titolo": "REALIZZAZIONE SITO WEB ISTITUZIONALE",
+      "settore": "comunicazione",
+      "punteggio": 46,
+      "scadenza": "2026-09-21"
+    },
+    "anac:897a03c3-6016-4fe6-ad84-539443ab5fcc": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Prestazione artistica e produzione tecnica spettacolo Leo Gassmann in \"Vita Vera Paradiso Summer Tour 2026\", 28 agosto 2026 a Civitanova Marche nello spiazzo me",
+      "settore": "eventi",
+      "punteggio": 100,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:a1a9e69f-4943-4357-83b5-b92df474fc7e": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Fornitura di monografie edite da case editrici italiane e straniere destinate alla Biblioteca della Toscana Pietro Leopoldo e agli Uffici del Consiglio e della ",
+      "settore": "editoria",
+      "punteggio": 97,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:faec42de-e648-4738-9f01-68486a8f8857": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "ANTICA SAGRA E FIERA DEL TRESTO EDIZIONE 2026 - ALLESTIMENTO ILLUMINAZIONE ED ALLACCIAMENTI ELETTRICI PER GLI ESPOSITORI - RICHIESTA DI OFFERTA CON UN UNICO OPE",
+      "settore": "eventi",
+      "punteggio": 97,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:67237b54-7763-41ea-b896-8e39848f68b8": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "PROCEDURA NEGOZIATA PER L'AFFIDAMENTO DELLA FORNITURA DI DERRATE ALIMENTARI PER IL PERIODO 01.10.2025 – 31.12.2025.",
+      "settore": "alimentari",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:11bf333f-cba4-4156-9a51-df38a5174559": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "PROCEDURA NEGOZIATA PER L'AFFIDAMENTO DELLA FORNITURA DI DERRATE ALIMENTARI PER IL PERIODO 01.04.2026 - 30.06.2026.",
+      "settore": "alimentari",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:c30feca5-e312-4721-8da6-f3d204819eff": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "PROCEDURA NEGOZIATA PER L'AFFIDAMENTO DELLA FORNITURA DI DERRATE ALIMENTARI PER IL PERIODO 01.07.2026 - 31.08.2026.",
+      "settore": "alimentari",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:1cca27fa-83ca-4fab-941b-daf8574fe7d4": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "PROCEDURA NEGOZIATA PER L'AFFIDAMENTO DELLA FORNITURA DI DERRATE ALIMENTARI PER IL PERIODO 01.01.2026 - 31.03.2026.",
+      "settore": "alimentari",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:0f6a41a8-3ec2-4600-9976-abc1570d9aa6": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Servizio di consulenza in materia di ricerche di mercato, marketing e formazione per Gruppo CAP",
+      "settore": "consulenza",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:b6419896-c39a-44d9-b822-ad073142a148": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "AFFIDAMENTO DELLA CONSULENZA MANAGERIALE E DI PROGETTO PER LA DEFINIZIONE ED IMPLEMENTAZIONE DELLA STRATEGIA AZIENDALE PER LA GESTIONE DELLE SALE OPERATORIE",
+      "settore": "consulenza",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:30d94a89-408b-443f-b034-a6f39ee5d9a8": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "SERVIZIO DI COMUNICAZIONE INTEGRATA DELLA MOSTRA NAZIONALE DEL TARTUFO ANNO 2026",
+      "settore": "comunicazione",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:41f40074-aecf-42bd-a9f6-ce9012f874a3": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "AFFIDAMENTO SERVIZIO DI ORGANIZZAZIONE SPETTACOLO MUSICALE \"K- POP DREAM HUNTERS TRIBUTE SHOW LIVE\"IN OCCASIONE \"SUMMER FEST 2026\"",
+      "settore": "eventi",
+      "punteggio": 93,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:1e31e331-f228-47de-b39f-50d5496984c2": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "SERVIZIO DI REALIZZAZIONE DELLA CAMPAGNA DI COMUNICAZIONE DI ACCOMPAGNAMENTO ALLA INTRODUZIONE DELLA MISURAZIONE PUNTUALE DEI RIFIUTI PRESSO IL COMUNE DI PARABI",
+      "settore": "comunicazione",
+      "punteggio": 90,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:1d35b243-8303-49a3-9c38-5b5ed887e4be": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Gara 2600056304: Corsi di formazione per carroponte – DT Cen",
+      "settore": "consulenza",
+      "punteggio": 90,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:49d81c79-9c30-4a18-9bab-c84d2baca12f": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "GARA EUROPEA A PROCEDURA APERTA AI SENSI DELL'ART. 71 D.LGS. 36/2023 PER L'AFFIDAMENTO DEI SERVIZI DI GESTIONE DEI CANALI SOCIAL DI SACE",
+      "settore": "comunicazione",
+      "punteggio": 86,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:1eaddf95-37ae-49d3-b3ca-21d090f53e7d": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "DAGS - Accordo quadro con massimo 2 operatori per servizi di catering istituzionali per l'Università degli Studi di Udine_ZANOR",
+      "settore": "catering",
+      "punteggio": 83,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:91b20a6d-4248-4abc-9d7c-074b7af9c257": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "DAGS - Accordo quadro con massimo 2 operatori per servizi di catering istituzionali per l'Università degli Studi di Udine_DOLCEMENTE AMICI",
+      "settore": "catering",
+      "punteggio": 83,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:073e44b8-bd97-4321-87f2-d392f685d8c7": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Rassegne ed eventi 2026 e 2027 - “Estate a Pordenone”, “Natale a Pordenone”, evento inaugurale di “Pordenone Capitale Italiana della Cultura” e Carnevale 2027. ",
+      "settore": "eventi",
+      "punteggio": 79,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:02f08d9a-d171-4e3f-9df7-95b89b7aa11d": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Coordinamento strategico dei progetti con consulenza specialistica, controllo qualità e supporto completo all’esecuzione per il team “Digital Content, Copy & So",
+      "settore": "comunicazione",
+      "punteggio": 76,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:2ffd843c-e54e-463d-9806-9ad66728991c": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Servizio di supporto alla comunicazione istituzionale e social e dell’URP",
+      "settore": "comunicazione",
+      "punteggio": 76,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:f62d53d3-af3b-410f-9f4e-94f10f908c78": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "CONCESSIONE DI SERVIZI A RILEVANZA ECONOMICA ORGANIZZAZIONE E GESTIONE DELL'EVENTO “BEAT FESTIVAL” – EDIZIONE 2026 – PARCO DI SERRAVALLE, EMPOLI",
+      "settore": "eventi",
+      "punteggio": 72,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:3218f79a-63ae-49b2-9a05-53cc3f5884cd": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "acquisto spettacolo artista Ermal Meta",
+      "settore": "eventi",
+      "punteggio": 69,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:e9c60bb7-9b7d-42d8-a1f4-e931a2803669": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Affidamento dello spettacolo degli artisti LDA AKA7SEVEN per il pizza fest 2026",
+      "settore": "eventi",
+      "punteggio": 69,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:7db2b8ca-57f0-4d14-8f22-251ccbece08d": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Affidamento spettacolo Marcella Bella per il pizza fest 2026",
+      "settore": "eventi",
+      "punteggio": 69,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:4d0e6e2d-807d-4dfe-9981-e11e60141ab5": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Festival delle Giovani Generazioni",
+      "settore": "eventi",
+      "punteggio": 65,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:daf4904c-fe8a-4c8e-aa4e-2161cb9b87db": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Concorso nazionale Miss Italia - 87 edizione - finale regionale Miss Marche 2026 - Civitanova Marche 27 agosto 2026",
+      "settore": "eventi",
+      "punteggio": 61,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:09cc60d0-ac1f-400d-a721-e5d37424f728": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Ideazione e produzione campagna",
+      "settore": "comunicazione",
+      "punteggio": 50,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:64d27ed1-7ff4-435d-8ae4-600f1b1be5b5": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Ideazione e produzione campagna",
+      "settore": "comunicazione",
+      "punteggio": 50,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:d7b431b1-feae-4043-b7b7-1da555d1ec5c": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "PROCEDURA NEGOZIATA, AI SENSI DELL’ART. 76, COMMA 2, LETT. B) DEL D. LGS. 36/2023, PER L’AFFIDAMENTO DEL SERVIZIO DI ORGANIZZAZIONE DELLA MANIFESTAZIONE “FIERA ",
+      "settore": "eventi",
+      "punteggio": 50,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:9e360d63-9080-4211-87bd-6be3a44a8f93": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "6336857 - lotto 1",
+      "settore": "catering",
+      "punteggio": 33,
+      "ultimo_avvistamento": "2026-08-31"
+    },
+    "anac:2b135398-92c5-4fae-8011-01db5ad61c9e": {
+      "primo_avvistamento": "2026-08-31",
+      "titolo": "Milano - Bar e Pizzeria presso la Caserma \"Montebello\" e Bar presso la Caserma \"Ugolini\"",
+      "settore": "catering",
+      "punteggio": 30,
+      "ultimo_avvistamento": "2026-08-31"
     }
   },
   "run": [
@@ -1337,6 +1643,14 @@
       "attivi": 12,
       "nuovi": 8,
       "esiti": 26
+    },
+    {
+      "quando": "2026-08-31T11:23:37.607297+00:00",
+      "esaminati": 737,
+      "pertinenti": 22,
+      "attivi": 22,
+      "nuovi": 12,
+      "esiti": 32
     }
   ]
 }
